@@ -1,0 +1,409 @@
+
+@mixin body(){
+
+    margin: 0;
+    padding: 0;
+    background-image: $fondobody;
+    z-index: -10;
+
+    main{
+        font-family: $letraParrafo;
+        & .textMarca{
+            font-family: $letraMarca;
+        }
+    }
+
+    div.colorConteiner{
+        background-color: $fondocolor;
+      }
+
+    .imagenStandar{
+
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .imagenStandar1{
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    footer{
+        &.bgfooter{
+
+            background-image: $fondoFooter;
+
+            & .bgfooter1{
+        
+                background-image: $fondoFooterCopyR;
+                object-fit: contain;
+            }
+        }
+        
+    }
+    
+}
+
+@mixin listUl(){
+
+    .listaUl{
+    list-style: none;
+
+            & .elementoLi1{
+                display: flex;
+                justify-content: center;
+                align-items: center;    
+                font-family: $letraList;
+
+                & a{
+                color: $colorLinkList;
+                font-family: $letraLinkList;
+                }
+                & a:link{
+                text-decoration: none;                
+                
+                }
+                & a:hover{
+                color: $colorHoverList;
+                text-shadow: -2px 8px 8px rgba(0,0,0,0.51);
+                    font-weight: 500;
+                }
+            }
+        
+
+            & .elementoLi{
+
+                &:hover{
+                transform: scale(1.2);
+                }
+
+                & .contenedorImgText{
+                height: 100%;
+                font-family: $letraLinkList;            
+                   
+                    
+            }
+        }
+        
+    }
+}
+
+@mixin listaAsideSmall(){
+    
+    .listaAside{
+        grid-area: asaid;  
+        background-color: rgb(180, 226, 218);
+            & .contenedorAux{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+
+                & h2{
+                    writing-mode: vertical-rl;
+                    text-orientation: upright;
+                    font-size: 1.3rem;
+                    text-align: center;
+                }
+
+            }
+   
+    }
+
+}
+@mixin seccionProdSmall(){
+
+    .seccionProd{
+        grid-area: seccion1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        & h2{
+            height: 50px;
+            border: 2px solid black;
+            font-size: 1rem;
+            font-weight: 800;
+            background-color: blanchedalmond;
+        }
+
+        .contenedorTexto{
+
+            & p{
+                font-size: 0.9rem;
+              }
+            & h3{
+                font-size: 1.0rem;
+                font-weight: bold;
+              }
+        }
+        .contenedorImagen{
+
+            width: 90%;
+            height: 145px;
+        }
+    }
+}
+
+@mixin listaAsideMedium(){
+
+    .listaAside{
+        grid-area: asaid;  
+        background-color: rgb(180, 226, 218);
+        
+        & .contenedorAux{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            
+            & h2{
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+        
+        }
+
+    }
+}
+
+@mixin seccionProdMedium(){
+
+    .seccionProd{
+        grid-area: seccion1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        & h2{
+            height: 50px;
+            border: 2px solid black;
+            font-size: 100%;
+            font-weight: 800;
+            background-color: blanchedalmond;
+        }
+
+        & .contenedorImagen{
+
+            /*width: 80%;*/
+            height: 145px;
+        }
+
+    }
+}
+
+@mixin listaAsideFul(){
+    .listaAside{
+        grid-area: asaid;
+    
+
+        & .contenedorAux{
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 0px;
+        
+        
+            & .listaUl{
+            display: flex;
+            flex-direction: column;
+            font-size: 1.3rem;
+            text-transform: capitalize;
+            justify-content: space-evenly;
+            height: 495px;
+            font-family: 'Times New Roman', Times, serif;
+            align-items: flex-start;
+            }
+        }
+
+    }
+}
+
+@mixin seccionProdFul(){
+
+    .seccionProd{
+        grid-area: seccion1;
+        text-align: center;
+
+            & h2{
+                height: 50px;
+                border: 2px solid black;
+                font-size: 100%;
+                font-weight: 800;
+                background-color: blanchedalmond;
+            }
+
+            & .listaUl{
+                display: grid;
+                grid-template-columns: 24% 24% 24% 24%;
+                grid-template-rows: repeat(8, 280px);
+                column-gap: 1%;
+                justify-content: space-evenly;
+                text-transform: capitalize;
+            }
+
+    }
+
+}
+
+@mixin grillaProdSmall(){
+
+    &#cuerpoProd{
+        grid-area: main;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 300px 5000px;
+        grid-template-areas: "asaid" "seccion1";
+
+        & .listaAside {
+            & .listaUl{
+            width: 90%;
+            display: grid;
+            grid-template-columns: 45% 45%;
+            grid-template-rows: repeat(5 60px);
+            font-size: 1rem;
+            text-transform: capitalize;
+            text-align: center;
+            align-content: space-between;
+            height: 300px;
+            }
+        }
+
+        & .seccionProd {
+            & .listaUl{             
+            display: grid;
+            grid-template-columns: 48% 48%;
+            grid-template-rows: repeat(16, 300px);
+            column-gap: 1%;
+            justify-content: space-evenly;
+            text-transform: capitalize;
+            
+            }
+        }
+    }
+}
+
+@mixin grillaProdMedium(){
+
+    &#cuerpoProd{
+        grid-area: main;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 300px 3700px;
+        grid-template-areas: "asaid" "seccion1";
+
+        & .listaAside {
+            & .listaUl{
+            width: 90%;
+            display: grid;
+            grid-template-columns: 33% 33% 33% ;
+            grid-template-rows: repeat(5, 60px);
+            font-size: 100%;
+            text-transform: capitalize;
+            align-content: space-between;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+        }
+
+        & .seccionProd {
+            & .listaUl{
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            grid-template-rows: repeat(11, 328px);
+            column-gap: 1%;
+            justify-content: space-evenly;
+            text-transform: capitalize;
+            }
+        }
+
+
+    }
+
+
+
+}
+
+@mixin grillaProdFull(){
+
+    &#cuerpoProd{
+        grid-area: main;
+        display: grid;
+        grid-template-columns: 20% 75%;
+        grid-template-rows: 2400px;
+        grid-template-areas: "asaid seccion1";
+    }
+}
+
+@mixin grillaAbout(){
+
+    &#cuerpoAbout{  
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-evenly;
+
+        & .containInfo{
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-around;
+            height: 100%;
+
+            & h1{
+            text-align: center;
+            }
+
+            & p{
+                line-height: 1.4em;
+            }
+
+        }
+        & .alineado{
+            text-align: justify;        
+        }
+
+    }
+}
+
+@mixin grillaContact(){
+
+    & .centrado{
+        display: flex;
+        justify-content: center;
+    
+        & .contact {
+        width: 90%;
+        font-size: 100%;
+        font-weight: 400;
+            
+            & .containFrom {
+                
+                
+                background-color: $fondecolorForm;
+                background-image: $fondeContactimg;
+              
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                height: 800px;
+              
+                & .containRadio {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;       
+                }
+
+                & .containLimpForm{
+                    text-align: right;
+                }
+            }
+
+        }
+
+    }
+}
+

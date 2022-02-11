@@ -1,0 +1,83 @@
+
+
+@import "variables";
+@import "mixin";
+
+
+@media only screen and (max-width: 600px){
+    
+    body{
+        @include body();
+    }
+        
+    main{
+        /*main products*/
+        @include grillaProdSmall();
+        @include listaAsideSmall();
+        @include seccionProdSmall();
+        @include listUl();
+        /*main about*/
+        @include grillaAbout();
+        /*main contact*/
+        @include grillaContact();
+    }
+
+    fieldset{
+        background-color: $fondecolorForm;
+        background-image: $fondeContactimg;
+    }
+    
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1200px){
+    
+    body{
+        @include body();
+    }
+
+    
+    main{
+        /*main products*/
+        @include grillaProdMedium();
+        @include listaAsideMedium();
+        @include seccionProdMedium();
+        @include listUl();        
+        /*main about*/
+        @include grillaAbout();
+        /*main contact*/
+        @include grillaContact();
+
+    }
+    fieldset{
+        background-color: $fondecolorForm;
+        background-image: $fondeContactimg;
+    }
+
+}
+
+@media only screen and (min-width: 1201px){
+    
+    body{
+        @include body();
+    }
+    
+    
+    main{
+        /*main products*/
+        @include grillaProdFull();
+        @include listaAsideFul();
+        @include seccionProdFul();
+        @include listUl();
+        /*main about*/
+        @include grillaAbout();
+        /*main contact*/
+        @include grillaContact();
+    }
+    fieldset{
+        background-color: $fondecolorForm;
+        background-image: $fondeContactimg;
+    }    
+
+}
+
+

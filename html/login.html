@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../img/marca.webp" type="image/x-icon" />
+    <title>Masala/Login</title>
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre&family=Architects+Daughter&family=Cookie&family=Dancing+Script&family=Indie+Flower&family=Noto+Sans&family=Pontano+Sans&family=Raleway&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- font local-->
+    <style type="text/css" media="screen, print">
+      @font-face {
+        font-family: "BT Trial";
+        src: url("font/BTTTRIAL.otf");
+      }
+    </style>
+    <!--CSS-->
+    <link rel="stylesheet" href="../responsive.css" />
+    <link rel="stylesheet" href="../sass/products.css" />
+    <!--Boostrap-->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container colorConteiner">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html">
+            <img src="../img/marca3.webp" alt="logotipo" width="150" />
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="../index.html">Home</a>
+              </li>
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="products.html">Products</a>
+              </li>
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="aboutus.html">About us</a>
+              </li>
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="contactus.html">Contact</a>
+              </li>
+              <li class="nav-item ms-3">
+                <a class="nav-link active" href="login.html">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <header class="mt-1 mb-2">
+        <div class="row d-flex justify-content-center recorrido">
+          <img
+            src="../img/navidad1.webp"
+            alt="banner navidad"
+            class="img-fluid"
+          />
+        </div>
+      </header>
+
+      <main class="pb-5">
+        <section>
+          <fieldset class="shadow-lg rounded rounded-3 p-5 m-5">
+            <legend>Ingresar</legend>
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" class="form-text">
+                  Nunca compartas tu e-mail con desconocidos.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label class="form-check-label" for="exampleCheck1"
+                  >No recuerdo mi password.</label
+                >
+              </div>
+              <button type="submit" class="btn btn-outline-success">
+                Ingresar
+              </button>
+            </form>
+          </fieldset>
+        </section>
+
+        <div class="d-flex justify-content-center">
+          <img src="../img/marca5.webp" alt="banner masala" class="img-fluid" />
+        </div>
+
+        <section>
+          <fieldset class="shadow-lg rounded rounded-3 p-5 mt-5 me-5 ms-5">
+            <legend>Registro</legend>
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" />
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="inputPassword4"
+                />
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Direccion</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputAddress"
+                  placeholder="1234 Main St"
+                />
+              </div>
+              <div class="col-12">
+                <label for="inputAddress2" class="form-label">Barrio</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputAddress2"
+                  placeholder="Apartment, studio, or floor"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="inputCity" class="form-label">Ciudad</label>
+                <input type="text" class="form-control" id="inputCity" />
+              </div>
+              <div class="col-md-4">
+                <label for="inputState" class="form-label">Provincia</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Elige...</option>
+                  <option>Buenos Aires</option>
+                  <option>Cordoba</option>
+                  <option>Corrientes</option>
+                  <option>Jujuy</option>
+                  <option>La Pampa</option>
+                  <option>Mendoza</option>
+                  <option>Rio Negro</option>
+                  <option>Salta</option>
+                  <option>Santa Fe</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="inputZip" />
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="gridCheck"
+                  />
+                  <label class="form-check-label" for="gridCheck">
+                    Acepto recibir ofertas.
+                  </label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-outline-success">
+                  Registro
+                </button>
+              </div>
+            </form>
+          </fieldset>
+        </section>
+      </main>
+    </div>
+
+    <footer class="container-fluid bg-black bgfooter">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-4 pt-5 pb-5">
+            <ul class="text-start list-unstyled">
+              <li>
+                <a
+                  class="text-decoration-none text-info"
+                  href="https://www.mercadopago.com.ar/ayuda/_3145"
+                  >Terminos y Condiciones de Pago. -Mercado Pago-</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-decoration-none text-info"
+                  href="https://www.mercadopago.com.pe/ayuda/terminos-condiciones-uso_2483"
+                  >Términos y Condiciones de Uso. -Mercado Pago-</a
+                >
+              </li>
+              <li>
+                <a class="text-decoration-none text-info" href="#">Legales.</a>
+              </li>
+              <li>
+                <a
+                  class="text-decoration-none text-info"
+                  href="./contactus.html"
+                  >Contacto.</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="d-flex justify-content-center col-sm-6 col-md-4 pt-5 pb-5 align-self-center"
+          >
+            <span class="text-light me-3">Seguinos -> </span>
+
+            <div class="row-cols-auto">
+              <a
+                class="text-decoration-none col-3"
+                href="https://www.facebook.com"
+              >
+                <img
+                  src="../img/facebook1.webp"
+                  alt="icono facebok"
+                  width="30"
+                />
+              </a>
+              <a
+                class="text-decoration-none col-3"
+                href="https://www.instagram.com"
+              >
+                <img
+                  src="../img/instagram1.webp"
+                  alt="icono instagram"
+                  width="30"
+                />
+              </a>
+              <a class="text-decoration-none col-3" href="https://twitter.com">
+                <img
+                  src="../img/twitter1.webp"
+                  alt="icono twitter"
+                  width="30"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="col-md-4 pt-5 pb-5 d-flex justify-content-end align-self-center"
+          >
+            <a href="../index.html" class="text-decoration-none">
+              <img src="../img/marca5.webp" alt="logotipo" width="200"
+            /></a>
+          </div>
+
+          <div
+            class="container text-center text-white p-3 bg-dark mb-2 bgfooter1"
+          >
+            Todos los derechos reservados &copy; 2021 Copyright:
+            <a class="text-white" href="#">Masala.com</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../main.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>

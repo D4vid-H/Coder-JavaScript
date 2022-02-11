@@ -1,0 +1,60 @@
+
+@keyframes latido{
+
+  0% {
+    transform: scale(1.0);
+  }
+  10%{
+    transform: scale(0.9);
+  }
+  25% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    transform: scale(0.8);
+  }
+  90% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+
+}
+
+@keyframes recorrido{
+
+  0% {
+      transform: rotateX(0deg);
+  }
+
+  50%{
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+
+
+}
+
+
+.recorrido{
+  animation-name: recorrido;
+  animation-iteration-count: 1;
+  animation-duration: 2s;
+  animation-delay: 1s;
+
+}
+
+
+.latido{
+  animation-name: latido;
+  animation-iteration-count: 3;
+  animation-duration: 500ms;
+  animation-delay: 3s;
+}
