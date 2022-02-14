@@ -67,6 +67,9 @@
               <li class="nav-item ms-3">
                 <a class="nav-link" href="login.html">Login</a>
               </li>
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="">Login</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -157,682 +160,82 @@
             class="bg-success bg-opacity-10 text-center h3 text-uppercase text-body shadow mb-5 mt-5 pb-3 pt-3"
           >
             Nuestros Productos
+            <button type="button" class="btn btn-outline-success btn-sm fs-3" data-bs-toggle="modal" data-bs-target="#cargaModal" >+</button>
+            <!-- Modal -->
+              <div class="modal fade" id="cargaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Cargar producto</h5>
+                      <!-- <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <div class="modal-body">
+                      <!-- Nombre -->
+                      <div class="row g-3">
+                        <div class="col-sm-7">
+                          <input type="text" class="form-control" id="nombre" placeholder="Nombre del producto" aria-label="City">
+                        </div>
+                        <div class="col-sm">
+                          <input type="text" class="form-control" id="cod" placeholder="Codigo" aria-label="State">
+                        </div>
+                        <div class="col-sm">
+                          <input type="text" class="form-control" id="stock" placeholder="Stock" aria-label="Zip">
+                        </div>
+                      </div>
+                      <!-- Descripcion -->
+                      <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea"></label>
+                      </div>
+                      <!-- Precio -->
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>                        
+                        <input type="text" class="form-control" id="pre" placeholder="Precio del producto" aria-label="Dollar amount (with dot and two decimal places)">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary" onclick="nuevoProducto()">Cargar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
           <div class="grillaProd">
-            <ul class="listaUl">
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/legumbres.webp"
-                      alt="Legumbres"
-                      class="rounded-circle rounded-circle rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>legumbres</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/semillas.webp"
-                      alt="Semillas"
-                      class="rounded-circle rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>semillas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/Yerba.webp"
-                      alt="imagen de yerba mate"
-                      class="rounded-circle rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>Yerbas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/regionales2.webp"
-                      alt="Art. Regionales"
-                      class="rounded-circle rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>pro. regional</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/frsecos.webp"
-                      alt="Frutos secos"
-                      class="rounded-circle rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>frutos secos</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/legumbres.webp"
-                      alt="Legumbres"
-                      class="rounded-circle rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>legumbres</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/semillas.webp"
-                      alt="Semillas"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>semillas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/Yerba.webp"
-                      alt="Yerba"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>yerba</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/regionales2.webp"
-                      alt="Art. Regionales"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>pro. regional</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/frsecos.webp"
-                      alt="Frutos Secos"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>frutos secos</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/legumbres.webp"
-                      alt="Legumbres"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>legumbres</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/semillas.webp"
-                      alt="Semillas"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>semillas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/Yerba.webp"
-                      alt="imagen de yerba mate"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>Yerbas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/regionales2.webp"
-                      alt="Art. Regionales"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>pro. regional</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/frsecos.webp"
-                      alt="Frutos Secos"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>frutos secos</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/legumbres.webp"
-                      alt="Legumbres"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>legumbres</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/semillas.webp"
-                      alt="Semillas"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>semillas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/Yerba.webp"
-                      alt="Yerba"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>yerba</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/regionales2.webp"
-                      alt="Art. Regionales"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>pro. regional</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/frsecos.webp"
-                      alt="Frutos Secos"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>frutos secos</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/legumbres.webp"
-                      alt="Legumbres"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>legumbres</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/semillas.webp"
-                      alt="Semillas"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>semillas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/Yerba.webp"
-                      alt="imagen de yerba mate"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>Yerbas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/regionales2.webp"
-                      alt="Art. Regionales"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>pro. regional</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/frsecos.webp"
-                      alt="Frutos Secos"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>frutos secos</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/legumbres.webp"
-                      alt="Legumbres"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>legumbres</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/semillas.webp"
-                      alt="Semillas"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>semillas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/Yerba.webp"
-                      alt="imagen de yerba mate"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>Yerbas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/regionales2.webp"
-                      alt="Art. Regionales"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>pro. regional</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/frsecos.webp"
-                      alt="Frutos Secos"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>frutos secos</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/legumbres.webp"
-                      alt="Legumbres"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>legumbres</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
-              <li class="elementoLi">
-                <div class="contenedorImgText">
-                  <div class="contenedorImagen">
-                    <img
-                      src="../img/semillas.webp"
-                      alt="Semillas"
-                      class="rounded-circle imagenStandar"
-                    />
-                  </div>
-                  <div class="contenedorTexto">
-                    <h4>semillas</h4>
-                    <p>Encontra lo que estas buscando.</p>
-                  </div>
-                  <button
-                    type="button"
-                    class="btn btn-outline-success"                    
-                  >
-                    Ver
-                  </button>
-                </div>
-              </li>
+            <ul class="listaUl" id="listaProuctos">
+              
             </ul>
+          </div>
+        </section>
+
+        <section id="modal" class="modal__inicio">
+          <div class="modal__contenedor">
+              <!--head -->
+                <h3 class="modal__titulo">¡Gracias por su compre!</h3>              
+             <!--body-->             
+            <div class="modal__cuerpo">
+              <table>
+                <colgroup>
+                  <col class="column1">
+                  <col class="columns2plus3" span="2">
+                </colgroup>
+                <tr>
+                  <th>Lime</th>
+                  <th>Lemon</th>
+                  <th>Orange</th>
+                </tr>
+                <tr>
+                  <td>Green</td>
+                  <td>Yellow</td>
+                  <td>Orange</td>
+                </tr>
+              </table>
+            </div>            
+              <!--footer -->
+            <div class="modal__cerrar">
+              <button class="modal__boton modal__comprar">Pagar</button>
+              <button class="modal__boton modal__cerrar">Cerrar</button>
+            </div>
           </div>
         </section>
       </main>
