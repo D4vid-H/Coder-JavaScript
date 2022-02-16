@@ -70,9 +70,9 @@
   display: flex;
   opacity: 0;
   pointer-events: none; 
-  transition: opacity .6s .9s;
+  transition: opacity .3s .5s;
   --transform: translateY(-100vh);
-  --transition: transform .8s; 
+  --transition: transform .4s; 
 }
 
 .modal--show{
@@ -137,14 +137,18 @@
   width: 80%;
   height: 80%;
   background-color: #808080;
+  border: 3px solid black;
 }
 .detalle__compra{
   width: 50%;
   height: 80%;
   background-color: #808080;
 }
-.tabla__cabecera{
-  
+.tabla__cabecera{  
   border: 3px solid black;
+}
 
+.imagen__marca__modal{
+  width: 75px;
+  height: auto;
 }

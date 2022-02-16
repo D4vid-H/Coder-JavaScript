@@ -1,6 +1,9 @@
 const PRODUCTOS = [{nombre: 'tomate', codigo: '1', descripcion: 'Verdura con pulpa y semillas.', cantidad: 100, precio: 23}, 
                   {nombre: 'lechuga', codigo: '2', descripcion: 'verdura de hoja.', cantidad: 33, precio: 55},
                   {nombre: 'zapallo', codigo: '3', descripcion: 'Verdura para locro.', cantidad: 200, precio: 74}];
+
+const CARRITO = [];
+
 class Producto{
   constructor(nombre, codigo, descripcion, cantidad, precio){
     this.nombre = nombre;
@@ -39,7 +42,7 @@ document.getElementById("nombre").value = "";
 document.getElementById("cod").value = "";
 document.getElementById("stock").value = "";
 document.getElementById("floatingTextarea").value = "";
-document.getElementById("precio").value ="";
+document.getElementById("pre").value ="";
 }
 
 const cargarArrayProducto = () => {
@@ -95,28 +98,68 @@ function nuevaCompra(prod){
   let cantidad = parseInt(document.getElementById(`cant${prod}`).value);
 
   const compraNueva = new Compra(codigo, cantidad);
-    CARITTO.push(compraNueva);
+    CARRITO.push(compraNueva);
 }
 
-/* function hacer(){
+const mostrarCompra = () => {
 
-const buscar = (prod) => prod.nombre;
+    
+    const compraTotal = carritoLleno();
+    const tablaCuerpo = document.querySelector('tbody');
+    const tablaFooter = document.querySelector('tfoot');
+    const tr = document.createElement('tr');
 
-const nuevoVector = PRODUCTOS.map(buscar);
+    let contador = 0;
+    for (const item of compraTotal){
 
-console.log(nuevoVector);
+      
+      tablaCuerpo.appendChild(tr);
+      const td = document.querySelector('tbody tr')/* .setAttribute("class", `num${contador}`) */;
+      td.setAttribute("class", `num${contador}`);
+      
+      td.innerHTML = `<td>Prod: ${item.nombre}</td>
+                      <td>Precio: ${item.precio}</td> `   
+                      contador ++;  
+    }
+  
+    const total = CARRITO.reduce((total, next) => total += next.total, 0);
+  
+    const tfoot = document.querySelector('tfoot tr')
+    tfoot.innerHTML = ` <td></td>
+                        <td>TOTAL: ${total}</td> `
+  }
+
+function modal(){
+
+ /* mostrarCompra(); */
+
+  const abrirModal = document.querySelector('.lanzar__modal');
+  const cerrarModal = document.querySelector('.cerrar__modal');
+  const modal = document.querySelector('#vantana__modal');
+  
+  
+  abrirModal.addEventListener('click', (e)=>{
+    e.preventDefault(); 
+    mostrarCompra();
+    modal.classList.add('modal--show');
+  });
+  
+  cerrarModal.addEventListener('click', (e)=>{
+    e.preventDefault(); 
+    modal.classList.remove('modal--show');
+  });
+
 }
- */
 
 const carritoLleno = () => {  
  
     const nuevoArreglo = PRODUCTOS.filter(arregloCompra);
-    
+  
     return nuevoArreglo;
 }
 
 function arregloCompra(objeto){   
-    for(const item of CARITTO){
+    for(const item of CARRITO){
       if(item.codigo == objeto.codigo){
           item.total = item.cantidad * objeto.precio;
         return true;
@@ -124,22 +167,10 @@ function arregloCompra(objeto){
     }
 }
 
+/*mostrarCompra(carritoLleno()); */
+
 cargarArrayProducto();
-
-const abrirModal = document.querySelector('.lanzar__modal');
-const cerrarModal = document.querySelector('.cerrar__modal');
-const modal = document.querySelector('#vantana__modal');
-
-
-abrirModal.addEventListener('click', (e)=>{
-  e.preventDefault(); 
-  modal.classList.add('modal--show');
-});
-
-cerrarModal.addEventListener('click', (e)=>{
-  e.preventDefault(); 
-  modal.classList.remove('modal--show');
-});
+modal();
 
 function crearTarjetaProducto(prod) {
 
@@ -163,7 +194,7 @@ function crearTarjetaProducto(prod) {
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">${prod.nombre}</h5>
+                      <h5 class="modal-title" id="exampleModalLabel"><img src="../img/marca.webp" class="imagen__marca__modal" alt="logotipo"/></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <!-- Card -->
@@ -175,7 +206,7 @@ function crearTarjetaProducto(prod) {
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
+                              <h5 class="card-title">${prod.nombre}</h5>
                               <p class="card-text">${prod.descripcion}.</p>
                               <p class="card-text"><small class="text-muted">Masala - Tienda ONLINE</small></p>
                               <div class="row gap-2 input-group mb-1">
@@ -184,7 +215,7 @@ function crearTarjetaProducto(prod) {
                                 <span class="col-sm-4 input-group-text">Codigo:<span id="${prod.codigo}">${prod.codigo}</span></span>
                               </div>
                               <div class="row gap-2 input-group mb-1">
-                                <input type="number" id="cant${prod.codigo}" class="col-sm-2 form-control" placeholder="0" aria-label="Zip">
+                                <input type="number" id="cant${prod.codigo}" class="col-sm-2 form-control" value="1" aria-label="Zip">
                                 <span class="col-sm-5 input-group-text">Stock: ${prod.cantidad}</span>                                    
                               </div>
                             </div>
@@ -195,7 +226,7 @@ function crearTarjetaProducto(prod) {
                     <!-- Footer -->                      
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary" onclick="nuevaCompra(${prod.codigo})">Comprar</button>
+                      <button type="button" class="btn btn-primary" onclick="nuevaCompra(${prod.codigo})" data-bs-dismiss="modal">Comprar</button>
                     </div>
                   </div>
                 </div>
