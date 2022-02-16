@@ -134,14 +134,12 @@
 }
 
 .info__compra{
-  width: 80%;
-  height: 80%;
+  width: 20rem;  
   background-color: #808080;
   border: 3px solid black;
 }
 .detalle__compra{
-  width: 50%;
-  height: 80%;
+  width: 15rem;
   background-color: #808080;
 }
 .tabla__cabecera{  

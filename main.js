@@ -1,6 +1,6 @@
-const PRODUCTOS = [{nombre: 'tomate', codigo: '1', descripcion: 'Verdura con pulpa y semillas.', cantidad: 100, precio: 23}, 
-                  {nombre: 'lechuga', codigo: '2', descripcion: 'verdura de hoja.', cantidad: 33, precio: 55},
-                  {nombre: 'zapallo', codigo: '3', descripcion: 'Verdura para locro.', cantidad: 200, precio: 74}];
+const PRODUCTOS = [{nombre: 'Semillas', codigo: '1', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 100, precio: 23}, 
+                  {nombre: 'Especias', codigo: '2', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 33, precio: 55},
+                  {nombre: 'Legumbres', codigo: '3', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 200, precio: 74}];
 
 const CARRITO = [];
 
@@ -20,9 +20,11 @@ class Producto{
 
 class Compra{
   constructor(codigo, cantidad){
+    this.nombre;
     this.codigo = codigo;
     this.cantidad = cantidad;
     this.total;
+    this.precio;
     //calcularTotal(cant) {return cant.reduce(total, this.precio), 0};
   }
     
@@ -65,20 +67,19 @@ function nuevoProducto() {
     }else {alert("No dejar ningun campo vacio");}      
     
   }else {alert("Escribir un precio con este formato: 0.00");}
-/*   hacer(); */
   limpiar();
 }
 
-function cargarProducto(Nuevoprod){
+function cargarProducto(nuevoProd){
   
   if(PRODUCTOS.length == 0){
-    PRODUCTOS.push(Nuevoprod); 
-    crearTarjetaProducto(Nuevoprod);
-    }else if(revisarCodigoProd(PRODUCTOS, Nuevoprod)){ 
+    PRODUCTOS.push(nuevoProd); 
+    crearTarjetaProducto(nuevoProd);
+    }else if(revisarCodigoProd(PRODUCTOS, nuevoProd)){ 
       alert("Codigo Repetido");
     }else{
-      PRODUCTOS.push(Nuevoprod);
-      crearTarjetaProducto(Nuevoprod);
+      PRODUCTOS.push(nuevoProd);
+      crearTarjetaProducto(nuevoProd);
     }
 }
 
@@ -92,10 +93,9 @@ const revisarCodigoProd = (arreglo, nuevoProd) => {
   }
 }
 
-function nuevaCompra(prod){
+function nuevaCompra(codigo){
 
-  let codigo = prod;
-  let cantidad = parseInt(document.getElementById(`cant${prod}`).value);
+  let cantidad = parseInt(document.getElementById(`cant${codigo}`).value);
 
   const compraNueva = new Compra(codigo, cantidad);
     CARRITO.push(compraNueva);
@@ -103,31 +103,24 @@ function nuevaCompra(prod){
 
 const mostrarCompra = () => {
 
-    
     const compraTotal = carritoLleno();
     const tablaCuerpo = document.querySelector('tbody');
-    const tablaFooter = document.querySelector('tfoot');
-    const tr = document.createElement('tr');
-
-    let contador = 0;
-    for (const item of compraTotal){
-
-      
-      tablaCuerpo.appendChild(tr);
-      const td = document.querySelector('tbody tr')/* .setAttribute("class", `num${contador}`) */;
-      td.setAttribute("class", `num${contador}`);
-      
-      td.innerHTML = `<td>Prod: ${item.nombre}</td>
-                      <td>Precio: ${item.precio}</td> `   
-                      contador ++;  
-    }
-  
+    tablaCuerpo.innerHTML = "";
+    
     const total = CARRITO.reduce((total, next) => total += next.total, 0);
-  
-    const tfoot = document.querySelector('tfoot tr')
+    
+    for (const item of CARRITO){
+      const tr = document.createElement('tr');
+      const uno = tablaCuerpo.appendChild(tr);
+      uno.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
+                        <td>${item.cantidad}</td>
+                        <td>$${item.precio * item.cantidad}</td>`;                     
+    }  
+    const tfoot = document.querySelector('tfoot tr');
     tfoot.innerHTML = ` <td></td>
-                        <td>TOTAL: ${total}</td> `
-  }
+                        <td></td>
+                        <td>TOTAL: ${total}</td> `;
+}
 
 function modal(){
 
@@ -162,12 +155,12 @@ function arregloCompra(objeto){
     for(const item of CARRITO){
       if(item.codigo == objeto.codigo){
           item.total = item.cantidad * objeto.precio;
+          item.nombre = objeto.nombre;
+          item.precio = objeto.precio;
         return true;
       }
     }
 }
-
-/*mostrarCompra(carritoLleno()); */
 
 cargarArrayProducto();
 modal();
@@ -177,20 +170,20 @@ function crearTarjetaProducto(prod) {
   let etiqueta = document.createElement("li");
   etiqueta.setAttribute("class", "elementoLi");
   etiqueta.setAttribute("id", `${prod.codigo}`);
-  document.getElementById(`listaProuctos`).appendChild(etiqueta);
+  document.getElementById(`listaProductos`).appendChild(etiqueta);
   document.getElementById(`${prod.codigo}`).innerHTML =
           `<div class="contenedorImgText">
               <div class="contenedorImagen">
                 <img src="../img/${prod.codigo}.webp" alt="Legumbres" class="rounded-circle rounded-circle rounded-circle imagenStandar"/>
               </div>
               <div class="contenedorTexto">
-                <h4>legumbres</h4>
-                <p>Encontra lo que estas buscando.</p>
+                <h4>${prod.nombre}</h4>
+                <p>${prod.descripcion}.</p>
               </div> 
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#${prod.nombre}">Ver</button>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#cod${prod.codigo}">Ver</button>
               </div>
             <!-- Modal -->
-              <div class="modal fade" id="${prod.nombre}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="cod${prod.codigo}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
