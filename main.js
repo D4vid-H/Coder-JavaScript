@@ -124,8 +124,6 @@ const mostrarCompra = () => {
 
 function modal(){
 
- /* mostrarCompra(); */
-
   const abrirModal = document.querySelector('.lanzar__modal');
   const cerrarModal = document.querySelector('.cerrar__modal');
   const modal = document.querySelector('#vantana__modal');
