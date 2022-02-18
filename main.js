@@ -1,17 +1,34 @@
-const PRODUCTOS = [{nombre: 'Semillas', codigo: '1', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 100, precio: 23}, 
-                  {nombre: 'Especias', codigo: '2', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 33, precio: 55},
-                  {nombre: 'Legumbres', codigo: '3', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 200, precio: 74}];
+ScrollReveal().reveal('.elementoLi' , {delay: 500, reset: true});
 
-const CARRITO = [];
+let FILTRADO = [];
+
+const filtroProdMostrar = () => {  
+  const lista = document.querySelectorAll('.elementoLi1 a');
+  for (const item of lista){
+    item.addEventListener('click', (evt) => {
+    const categoriaId = evt.currentTarget.getAttribute("value"); 
+    FILTRADO = (PRODUCTOS.filter(obj => obj.categoria == categoriaId));
+    cargarArrayProducto();
+    });    
+  }
+    
+}
+ 
+const PRODUCTOS = [{nombre: 'Semillas', codigo: '1', categoria: '5', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 100, precio: 23}, 
+                  {nombre: 'Especias', codigo: '2', categoria: '10' , descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 33, precio: 55},
+                  {nombre: 'Legumbres', codigo: '3', categoria: '7', descripcion: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?', cantidad: 200, precio: 74}];
+
+let CARRITO = [];
 
 class Producto{
-  constructor(nombre, codigo, descripcion, cantidad, precio){
+  constructor(nombre, codigo, descripcion, cantidad, precio, categoria){
     this.nombre = nombre;
     this.codigo = codigo;
+    this.categoria = categoria;
     this.descripcion = descripcion;
     this.cantidad = cantidad;
     this.precio = precio;
-    this.descuento;
+    this.descuento;    
   }
   actualizarCantidad(stock) {this.cantidad - stock};
   eliminarObjeto(stock) {};
@@ -30,8 +47,6 @@ class Compra{
     
 }
 
-ScrollReveal().reveal('.elementoLi' , {delay: 500, reset: true});
-
 function clikCompra(){
 
   let toastLiveExample = document.getElementById('liveToast')
@@ -42,27 +57,37 @@ function clikCompra(){
 const limpiar = () => {
 document.getElementById("nombre").value = "";
 document.getElementById("cod").value = "";
+document.querySelector('select').value = "0";
 document.getElementById("stock").value = "";
 document.getElementById("floatingTextarea").value = "";
 document.getElementById("pre").value ="";
 }
 
 const cargarArrayProducto = () => {
-  for (const cargado of PRODUCTOS){
-  crearTarjetaProducto(cargado);
-}};
+ if (FILTRADO.length != 0){
+  document.getElementById(`listaProductos`).innerHTML = "";
+  for (const objFilt of FILTRADO){
+    crearTarjetaProducto(objFilt);
+ }}else{
+  document.getElementById(`listaProductos`).innerHTML = "";
+  for (const objProd of PRODUCTOS){
+  crearTarjetaProducto(objProd);
+}}
+};
+
+filtroProdMostrar();
 
 function nuevoProducto() {
-
       let nombre = document.getElementById("nombre").value;
       let codigo = document.getElementById("cod").value;
+      let categoria = document.querySelector('select').value;
       let cantidad = parseInt(document.getElementById("stock").value);
       let descripcion = document.getElementById("floatingTextarea").value;
       let precio = parseFloat(document.getElementById("pre").value);
 
   if(!isNaN(cantidad) && !isNaN(precio)){
-    if((nombre != "") && (codigo != "") && (cantidad != "") && (descripcion != "") && (precio != "")){
-        const productoNuevo = new Producto(nombre, codigo, descripcion, cantidad, precio);
+    if((nombre != "") && (codigo != "") && (cantidad != "") && (descripcion != "") && (precio != "") && (categoria != "0")){
+        const productoNuevo = new Producto(nombre, codigo, descripcion, cantidad, precio, categoria);
         cargarProducto(productoNuevo);
     }else {alert("No dejar ningun campo vacio");}      
     
@@ -99,11 +124,14 @@ function nuevaCompra(codigo){
 
   const compraNueva = new Compra(codigo, cantidad);
     CARRITO.push(compraNueva);
+    document.querySelector('#cantComp').innerHTML = CARRITO.length;
+    
+    changoNav();
 }
 
 const mostrarCompra = () => {
 
-    const compraTotal = carritoLleno();
+    carritoLleno();
     const tablaCuerpo = document.querySelector('tbody');
     tablaCuerpo.innerHTML = "";
     
@@ -114,7 +142,9 @@ const mostrarCompra = () => {
       const uno = tablaCuerpo.appendChild(tr);
       uno.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
                         <td>${item.cantidad}</td>
-                        <td>$${item.precio * item.cantidad}</td>`;                     
+                        <td>$${item.precio * item.cantidad}</td>
+                        <td><button type="button" class="btn btn-outline-info" onclick="eliminarCompra(${item.codigo})">X</button></td>`;
+                                             
     }  
     const tfoot = document.querySelector('tfoot tr');
     tfoot.innerHTML = ` <td></td>
@@ -126,17 +156,26 @@ function modal(){
 
   const abrirModal = document.querySelector('.lanzar__modal');
   const cerrarModal = document.querySelector('.cerrar__modal');
+  const cerrModal = document.querySelector('.modal__comprar');
   const modal = document.querySelector('#vantana__modal');
   
   
-  abrirModal.addEventListener('click', (e)=>{
-    e.preventDefault(); 
+  abrirModal.addEventListener('click', (evt)=>{
+    evt.preventDefault(); 
     mostrarCompra();
     modal.classList.add('modal--show');
   });
   
-  cerrarModal.addEventListener('click', (e)=>{
-    e.preventDefault(); 
+  cerrarModal.addEventListener('click', (evt)=>{
+    evt.preventDefault(); 
+    modal.classList.remove('modal--show');
+  });
+
+  cerrModal.addEventListener('click', (evt)=>{
+    evt.preventDefault();
+    CARRITO = [];
+    const chango = document.querySelector('.ocultar__chango');
+    chango.classList.remove('mostrar--chango');
     modal.classList.remove('modal--show');
   });
 
@@ -150,6 +189,7 @@ const carritoLleno = () => {
 }
 
 function arregloCompra(objeto){   
+
     for(const item of CARRITO){
       if(item.codigo == objeto.codigo){
           item.total = item.cantidad * objeto.precio;
@@ -176,7 +216,7 @@ function crearTarjetaProducto(prod) {
               </div>
               <div class="contenedorTexto">
                 <h4>${prod.nombre}</h4>
-                <p>${prod.descripcion}.</p>
+                <p class="truncate">${prod.descripcion}.</p>
               </div> 
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#cod${prod.codigo}">Ver</button>
               </div>
@@ -217,11 +257,32 @@ function crearTarjetaProducto(prod) {
                     <!-- Footer -->                      
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary" onclick="nuevaCompra(${prod.codigo})" data-bs-dismiss="modal">Comprar</button>
+                      <button type="button" class="btn btn-primary" id="chango" onclick="nuevaCompra(${prod.codigo})" data-bs-dismiss="modal">Comprar</button>
                     </div>
                   </div>
                 </div>
               </div>
           </li>`;     
 }
+
+function changoNav(){
+
+  const chango = document.querySelector('.ocultar__chango');
+  chango.classList.add('mostrar--chango');
+}
+function eliminarCompra(codigo){
+
+  CARRITO = CARRITO.filter(item => item.codigo != codigo);
+  document.querySelector('#cantComp').innerHTML = CARRITO.length;
+  mostrarCompra();
+  if(CARRITO.length === 0){
+    const chango = document.querySelector('.ocultar__chango');
+    chango.classList.remove('mostrar--chango');
+    const modal = document.querySelector('#vantana__modal');
+    modal.classList.remove('modal--show');
+  }
+}
+
+
+
 
