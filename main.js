@@ -37,13 +37,12 @@ const PRODUCTOS = [
 let CARRITO = [];
 
 class Producto {
-  constructor(nombre, codigo, descripcion, cantidad, precio, categoria) {
+  constructor(nombre, codigo, descripcion, precio, categoria) {
     this.nombre = nombre;
     this.codigo = codigo;
     this.categoria = categoria;
     this.descripcion = descripcion;
     this.precio = precio;
-    this.descuento;
   }
 }
 
@@ -210,12 +209,12 @@ const carritoLleno = () => {
   return nuevoArreglo;
 };
 
-function arregloCompra(objeto) {
+function arregloCompra(producto) {
   for (const item of CARRITO) {
-    if (item.codigo == objeto.codigo) {
-      item.total = item.cantidad * objeto.precio;
-      item.nombre = objeto.nombre;
-      item.precio = objeto.precio;
+    if (item.codigo == producto.codigo) {
+      item.total = item.cantidad * producto.precio;
+      item.nombre = producto.nombre;
+      item.precio = producto.precio;
       return true;
     }
   }
