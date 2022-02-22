@@ -10,7 +10,7 @@ let FILTRADO = [];
 const PRODUCTOS = [
   {
     nombre: "Semillas",
-    codigo: "1",
+    id: "1",
     categoria: "5",
     descripcion:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
@@ -18,7 +18,7 @@ const PRODUCTOS = [
   },
   {
     nombre: "Especias",
-    codigo: "2",
+    id: "2",
     categoria: "10",
     descripcion:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
@@ -26,7 +26,7 @@ const PRODUCTOS = [
   },
   {
     nombre: "Legumbres",
-    codigo: "3",
+    id: "3",
     categoria: "7",
     descripcion:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
@@ -39,30 +39,44 @@ let CARRITO = [];
 class Producto {
   constructor(nombre, codigo, descripcion, precio, categoria) {
     this.nombre = nombre;
-    this.codigo = codigo;
+    this.id = codigo;
     this.categoria = categoria;
     this.descripcion = descripcion;
     this.precio = precio;
+  }
+  cargarProductoNuevo(productoNuevo) {
+    PRODUCTOS.length === 0 && PRODUCTOS.push(productoNuevo),
+      crearTarjetaProducto(productoNuevo);
+    revisarCodigoProductoNuevo(PRODUCTOS, productoNuevo)
+      ? alert("Codigo Repetido")
+      : PRODUCTOS.push(productoNuevo),
+      crearTarjetaProducto(productoNuevo);
   }
 }
 
 class Compra {
   constructor(codigo, cantidad) {
     this.nombre;
-    this.codigo = codigo;
+    this.id = codigo;
     this.cantidad = cantidad;
     this.total;
     this.precio;
   }
+  cargarCompra(compraNueva) {
+    CARRITO.push(compraNueva);
+    document.querySelector("#cantComp").innerHTML = CARRITO.length;
+    changoNav();
+  }
 }
 
 const filtroProductoMostrar = () => {
+
   const lista = document.querySelectorAll(".elementoLi1 a");
   for (const item of lista) {
     item.addEventListener("click", (evt) => {
       const categoriaId = evt.currentTarget.getAttribute("value");
       FILTRADO = PRODUCTOS.filter((obj) => obj.categoria == categoriaId);
-      cargarArregloProductos();
+      mostrarArregloProductos(categoriaId);
     });
   }
 };
@@ -76,33 +90,36 @@ const limpiarCargaProducto = () => {
   document.getElementById("pre").value = "";
 };
 
-const cargarArregloProductos = () => {
-  if (FILTRADO.length != 0) {
+const mostrarArregloProductos = (categoriaId) => {
+
+  if(categoriaId === undefined || categoriaId === '0'){
     document.getElementById(`listaProductos`).innerHTML = "";
-    for (const objFilt of FILTRADO) {
-      crearTarjetaProducto(objFilt);
-    }
+          for (const objProd of PRODUCTOS) {
+            crearTarjetaProducto(objProd);
+          }
   } else {
-    document.getElementById(`listaProductos`).innerHTML = "";
-    for (const objProd of PRODUCTOS) {
-      crearTarjetaProducto(objProd);
+      if (FILTRADO.length !== 0) {
+        document.getElementById(`listaProductos`).innerHTML = "";
+        for (const objFilt of FILTRADO) {
+          crearTarjetaProducto(objFilt);
+        }
+      } else document.getElementById(`listaProductos`).innerHTML = "No hay Productos disponibles";
     }
-  }
+
 };
 
 function crearNuevoProducto() {
   let nombre = document.getElementById("nombre").value;
   let codigo = document.getElementById("cod").value;
   let categoria = document.querySelector("select").value;
-  /* let cantidad = parseInt(document.getElementById("stock").value); */
   let descripcion = document.getElementById("floatingTextarea").value;
   let precio = parseFloat(document.getElementById("pre").value);
+  codigo = categoria + codigo;
 
-  if (!isNaN(cantidad) && !isNaN(precio)) {
+  if (!isNaN(precio)) {
     if (
       nombre != "" &&
       codigo != "" &&
-      /* (cantidad != "") && */ 
       descripcion != "" &&
       precio != "" &&
       categoria != "0"
@@ -114,17 +131,15 @@ function crearNuevoProducto() {
         precio,
         categoria
       );
-      cargarProductoNuevo(productoNuevo);
-    } else {
-      alert("No dejar ningun campo vacio");
-    }
+      productoNuevo.cargarProductoNuevo(productoNuevo);
+    } else alert("No dejar ningun campo vacio");
   } else {
     alert("Escribir un precio con este formato: 0.00");
   }
   limpiarCargaProducto();
 }
 
-function cargarProductoNuevo(productoNuevo) {
+/* function cargarProductoNuevo(productoNuevo) {
   if (PRODUCTOS.length == 0) {
     PRODUCTOS.push(productoNuevo);
     crearTarjetaProducto(productoNuevo);
@@ -134,11 +149,11 @@ function cargarProductoNuevo(productoNuevo) {
     PRODUCTOS.push(productoNuevo);
     crearTarjetaProducto(productoNuevo);
   }
-}
+} */
 
 const revisarCodigoProductoNuevo = (arregloProductos, productoNuevo) => {
   for (const obj of arregloProductos) {
-    if (obj.codigo === productoNuevo.codigo) {
+    if (obj.id === productoNuevo.id) {
       return true;
     }
   }
@@ -146,16 +161,15 @@ const revisarCodigoProductoNuevo = (arregloProductos, productoNuevo) => {
 
 function cargarNuevaCompra(codigo) {
   let cantidad = parseInt(document.getElementById(`cant${codigo}`).value);
-
   const compraNueva = new Compra(codigo, cantidad);
-  CARRITO.push(compraNueva);
-  document.querySelector("#cantComp").innerHTML = CARRITO.length;
-
-  changoNav();
+  compraNueva.cargarCompra(compraNueva);
 }
 
 const mostrarCompra = () => {
+  debugger;
   carritoLleno();
+  cargaCarritoStorege(CARRITO);
+
   const tablaCuerpo = document.querySelector("tbody");
   tablaCuerpo.innerHTML = "";
 
@@ -168,7 +182,7 @@ const mostrarCompra = () => {
                         <td>${item.cantidad}</td>
                         <td>$${item.precio * item.cantidad}</td>
                         <td><button type="button" class="btn btn-outline-info" onclick="eliminarCompra(${
-                          item.codigo
+                          item.id
                         })">X</button></td>`;
   }
   const tfoot = document.querySelector("tfoot tr");
@@ -178,6 +192,9 @@ const mostrarCompra = () => {
 };
 
 function modal() {
+  localStorage.getItem("carritoCompra") && changoNav();
+  localStorage.getItem("carritoCompra") && descargarCarritoStorage();
+
   const abrirModal = document.querySelector(".lanzar__modal");
   const cerrarModal = document.querySelector(".cerrar__modal");
   const cerrModal = document.querySelector(".modal__comprar");
@@ -200,18 +217,17 @@ function modal() {
     const chango = document.querySelector(".ocultar__chango");
     chango.classList.remove("mostrar--chango");
     modal.classList.remove("modal--show");
+    localStorage.removeItem("carritoCompra");
   });
 }
 
 const carritoLleno = () => {
-  const nuevoArreglo = PRODUCTOS.filter(arregloCompra);
-
-  return nuevoArreglo;
+  PRODUCTOS.filter(arregloCompra);
 };
 
 function arregloCompra(producto) {
   for (const item of CARRITO) {
-    if (item.codigo == producto.codigo) {
+    if (item.id == producto.id) {
       item.total = item.cantidad * producto.precio;
       item.nombre = producto.nombre;
       item.precio = producto.precio;
@@ -220,29 +236,25 @@ function arregloCompra(producto) {
   }
 }
 
-filtroProductoMostrar();
-cargarArregloProductos();
-modal();
-
 function crearTarjetaProducto(productoNuevo) {
   let etiqueta = document.createElement("li");
   etiqueta.setAttribute("class", "elementoLi");
-  etiqueta.setAttribute("id", `${productoNuevo.codigo}`);
+  etiqueta.setAttribute("id", `${productoNuevo.id}`);
   document.getElementById(`listaProductos`).appendChild(etiqueta);
   document.getElementById(
-    `${productoNuevo.codigo}`
+    `${productoNuevo.id}`
   ).innerHTML = `<div class="contenedorImgText">
               <div class="contenedorImagen">
-                <img src="../img/${productoNuevo.codigo}.webp" alt="Legumbres" class="rounded-circle rounded-circle rounded-circle imagenStandar"/>
+                <img src="../img/${productoNuevo.id}.webp" alt="Legumbres" class="rounded-circle rounded-circle rounded-circle imagenStandar"/>
               </div>
               <div class="contenedorTexto">
                 <h4>${productoNuevo.nombre}</h4>
                 <p class="truncate">${productoNuevo.descripcion}.</p>
               </div> 
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#cod${productoNuevo.codigo}">Ver</button>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#cod${productoNuevo.id}">Ver</button>
               </div>
             <!-- Modal -->
-              <div class="modal fade" id="cod${productoNuevo.codigo}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="cod${productoNuevo.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -254,7 +266,7 @@ function crearTarjetaProducto(productoNuevo) {
                       <div class="card mb-1" style="max-width: 540px;">
                         <div class="row g-0">
                           <div class="col-md-4">
-                            <img src="../img/${productoNuevo.codigo}.webp" class="img-fluid rounded-start" alt="...">
+                            <img src="../img/${productoNuevo.id}.webp" class="img-fluid rounded-start" alt="...">
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
@@ -263,11 +275,11 @@ function crearTarjetaProducto(productoNuevo) {
                               <p class="card-text"><small class="text-muted">Masala - Tienda ONLINE</small></p>
                               <div class="row gap-2 input-group mb-1">
                                 <span class="col-sm-1 input-group-text">$</span>
-                                <span class="col-sm-4 input-group-text" id="precio">${productoNuevo.precio}</span>
-                                <span class="col-sm-4 input-group-text">Codigo:<span id="${productoNuevo.codigo}">${productoNuevo.codigo}</span></span>
+                                <span class="col-sm-3 input-group-text" id="precio">${productoNuevo.precio}</span>
+                                <span class="col-sm-5 input-group-text">Codigo:<span id="${productoNuevo.id}">${productoNuevo.id}</span></span>
                               </div>
                               <div class="row gap-2 input-group mb-1">
-                                <input type="number" id="cant${productoNuevo.codigo}" class="col-sm-2 form-control" value="1" aria-label="Zip">
+                                <input type="number" id="cant${productoNuevo.id}" class="col-sm-2 form-control" value="1" aria-label="Zip">
                                 <span class="col-sm-5 input-group-text">Stock: 00</span>                                    
                               </div>
                             </div>
@@ -278,7 +290,7 @@ function crearTarjetaProducto(productoNuevo) {
                     <!-- Footer -->                      
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary" id="chango" onclick="cargarNuevaCompra(${productoNuevo.codigo})" data-bs-dismiss="modal">Comprar</button>
+                      <button type="button" class="btn btn-primary" id="chango" onclick="cargarNuevaCompra(${productoNuevo.id})" data-bs-dismiss="modal">Comprar</button>
                     </div>
                   </div>
                 </div>
@@ -290,14 +302,39 @@ function changoNav() {
   const chango = document.querySelector(".ocultar__chango");
   chango.classList.add("mostrar--chango");
 }
+
 function eliminarCompra(codigo) {
-  CARRITO = CARRITO.filter((item) => item.codigo != codigo);
+  borrarStorageCompra();
+  CARRITO = CARRITO.filter((item) => item.id != codigo);
   document.querySelector("#cantComp").innerHTML = CARRITO.length;
+  cargaCarritoStorege(CARRITO);
   mostrarCompra();
   if (CARRITO.length === 0) {
+    borrarStorageCompra();
     const chango = document.querySelector(".ocultar__chango");
     chango.classList.remove("mostrar--chango");
     const modal = document.querySelector("#vantana__modal");
     modal.classList.remove("modal--show");
   }
 }
+
+function cargaCarritoStorege(carrito) {
+  const esJSON = JSON.stringify(carrito);
+  localStorage.setItem("carritoCompra", esJSON);
+}
+
+function borrarStorageCompra() {
+  localStorage.removeItem("carritoCompra");
+}
+
+function descargarCarritoStorage() {
+  let descargaCarrito = localStorage.getItem("carritoCompra");
+  descargaCarrito = JSON.parse(descargaCarrito);
+  document.querySelector("#cantComp").innerHTML = descargaCarrito.length;
+
+  CARRITO = descargaCarrito;
+}
+
+filtroProductoMostrar();
+mostrarArregloProductos();
+modal();
