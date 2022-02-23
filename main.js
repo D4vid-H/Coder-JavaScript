@@ -1,8 +1,21 @@
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
+
 function clikCompra() {
   let toastLiveExample = document.getElementById("liveToast");
   let toast = new bootstrap.Toast(toastLiveExample);
+
+  const hora = new Date();
+  const mes = hora.getMonth() + 1;
+
+  document.querySelector(".toast-header small").innerHTML = `${hora.getDate()}/${mes}/${hora.getFullYear()} - ${hora.getHours()}:${hora.getMinutes()}:${hora.getSeconds()}`;
   toast.show();
+}
+
+const promoMes = () =>{
+  const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+  let date = new Date();
+  const mes = meses[date.getMonth()];
+  document.querySelector(".textMarca").innerHTML = `${mes}`;
 }
 
 let FILTRADO = [];
@@ -166,7 +179,6 @@ function cargarNuevaCompra(codigo) {
 }
 
 const mostrarCompra = () => {
-  debugger;
   carritoLleno();
   cargaCarritoStorege(CARRITO);
 
@@ -192,8 +204,8 @@ const mostrarCompra = () => {
 };
 
 function modal() {
-  localStorage.getItem("carritoCompra") && changoNav();
-  localStorage.getItem("carritoCompra") && descargarCarritoStorage();
+  localStorage.getItem("carritoCompra") && (changoNav(), descargarCarritoStorage());
+  /* localStorage.getItem("carritoCompra") && descargarCarritoStorage(); */
 
   const abrirModal = document.querySelector(".lanzar__modal");
   const cerrarModal = document.querySelector(".cerrar__modal");
@@ -299,6 +311,7 @@ function crearTarjetaProducto(productoNuevo) {
 }
 
 function changoNav() {
+
   const chango = document.querySelector(".ocultar__chango");
   chango.classList.add("mostrar--chango");
 }
@@ -335,6 +348,9 @@ function descargarCarritoStorage() {
   CARRITO = descargaCarrito;
 }
 
-filtroProductoMostrar();
-mostrarArregloProductos();
-modal();
+window.location.pathname === "/index.html" && promoMes();
+window.location.pathname === "/html/products.html" && (mostrarArregloProductos(),
+filtroProductoMostrar(),
+modal());
+
+
