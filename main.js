@@ -82,6 +82,47 @@ class Compra {
   }
 }
 
+const mostrarModalCarrito = () => {
+
+
+  const seccion = document.createElement('section');
+  seccion.setAttribute('id', 'vantana__modal');
+  seccion.setAttribute('class', 'modal__inicio');
+  document.querySelector('main').appendChild(seccion);
+
+  document.querySelector('#vantana__modal').innerHTML = 
+  `<div class="modal__contenedor">
+              <!--head -->
+                <h3 class="modal__titulo">¡Resumen de compra!</h3>              
+             <!--body-->             
+              <div class="modal__cuerpo">
+                <table class="">
+                  <thead class="tabla__cabecera">
+                    <tr>
+                      <th class="info__compra">Info Compra</th>
+                      <th class="info__compra">cantidad</th>
+                      <th class="detalle__compra">Precio</th>
+                      <th class="btn__eliminar"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      
+                    </tr>
+                  </tfoot>                  
+                </table>                
+              </div>            
+              <!--footer -->
+              <div class="modal__cerrar">
+                <button class="modal__boton cerrar__modal">Cerrar</button>
+                <button class="modal__boton modal__comprar">Pagar</button>              
+              </div>
+            </div>`
+}
+
 const filtroProductoMostrar = () => {
 
   const lista = document.querySelectorAll(".elementoLi1 a");
@@ -152,18 +193,6 @@ function crearNuevoProducto() {
   limpiarCargaProducto();
 }
 
-/* function cargarProductoNuevo(productoNuevo) {
-  if (PRODUCTOS.length == 0) {
-    PRODUCTOS.push(productoNuevo);
-    crearTarjetaProducto(productoNuevo);
-  } else if (revisarCodigoProductoNuevo(PRODUCTOS, productoNuevo)) {
-    alert("Codigo Repetido");
-  } else {
-    PRODUCTOS.push(productoNuevo);
-    crearTarjetaProducto(productoNuevo);
-  }
-} */
-
 const revisarCodigoProductoNuevo = (arregloProductos, productoNuevo) => {
   for (const obj of arregloProductos) {
     if (obj.id === productoNuevo.id) {
@@ -176,11 +205,11 @@ function cargarNuevaCompra(codigo) {
   let cantidad = parseInt(document.getElementById(`cant${codigo}`).value);
   const compraNueva = new Compra(codigo, cantidad);
   compraNueva.cargarCompra(compraNueva);
+  carritoLleno();
+  cargaCarritoStorege(CARRITO);
 }
 
 const mostrarCompra = () => {
-  carritoLleno();
-  cargaCarritoStorege(CARRITO);
 
   const tablaCuerpo = document.querySelector("tbody");
   tablaCuerpo.innerHTML = "";
@@ -205,8 +234,8 @@ const mostrarCompra = () => {
 
 function modal() {
   localStorage.getItem("carritoCompra") && (changoNav(), descargarCarritoStorage());
-  /* localStorage.getItem("carritoCompra") && descargarCarritoStorage(); */
-
+  mostrarModalCarrito();
+  
   const abrirModal = document.querySelector(".lanzar__modal");
   const cerrarModal = document.querySelector(".cerrar__modal");
   const cerrModal = document.querySelector(".modal__comprar");
@@ -311,9 +340,8 @@ function crearTarjetaProducto(productoNuevo) {
 }
 
 function changoNav() {
-
   const chango = document.querySelector(".ocultar__chango");
-  chango.classList.add("mostrar--chango");
+  chango.classList.add("mostrar--chango");  
 }
 
 function eliminarCompra(codigo) {
@@ -348,7 +376,8 @@ function descargarCarritoStorage() {
   CARRITO = descargaCarrito;
 }
 
-window.location.pathname === "/index.html" && promoMes();
+
+window.location.pathname === "/index.html" && (promoMes(), modal());
 window.location.pathname === "/html/products.html" && (mostrarArregloProductos(),
 filtroProductoMostrar(),
 modal());
