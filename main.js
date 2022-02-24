@@ -382,4 +382,8 @@ window.location.pathname === "/html/products.html" && (mostrarArregloProductos()
 filtroProductoMostrar(),
 modal());
 
+window.location.pathname === "/coder-javascript/index.html" && (promoMes(), modal());
+window.location.pathname === "/coder-javascript/html/products.html" && (mostrarArregloProductos(),
+filtroProductoMostrar(),
+modal());
 
