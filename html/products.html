@@ -164,7 +164,7 @@
             <!-- Modal -->
               <div class="modal fade" id="cargaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                  <div class="modal-content">
+                  <form class="modal-content was-validated" novalidate>
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">Cargar producto</h5>
                       <!-- <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button> -->
@@ -173,18 +173,18 @@
                       <!-- Nombre -->
                       <div class="row g-3">
                         <div class="col-sm-7">
-                          <input type="text" class="form-control" id="nombre" placeholder="Nombre del producto" aria-label="City">
+                          <input type="text" class="form-control" id="nombre" placeholder="Nombre del producto" aria-label="City" required>
                         </div>
                         <div class="col-sm">
-                          <input type="text" class="form-control" id="cod" placeholder="Codigo" aria-label="State">
+                          <input type="text" class="form-control" id="cod" placeholder="Codigo" aria-label="State" required>
                         </div>
                         <div class="col-sm">
-                          <input type="text" class="form-control" id="stock" placeholder="Stock" aria-label="Zip" value="00">
+                          <!-- <input type="text" class="form-control" id="stock" placeholder="Stock" aria-label="Zip" value="00" disabled> -->
                         </div>
                       </div>
                       <div>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                          <option value="0">Seleccion una categoria</option>
+                        <select class="form-select form-select-sm" aria-label="form-select-sm example" required>
+                          <option selected disabled value="0">Seleccion una categoria</option>
                           <option value="1">Regionales</option>
                           <option value="2">Organicos</option>
                           <option value="3">Frutos Secos</option>
@@ -194,26 +194,25 @@
                           <option value="7">Legumbres</option>
                           <option value="8">Harinas</option>
                           <option value="9">Herboris.</option>
-                          <option value="10">Especias</option>
-                          <option value="11">Legumbres</option>
+                          <option value="10">Especias</option>                        
                         </select>
                       </div>
                       <!-- Descripcion -->
                       <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" required></textarea>
                         <label for="floatingTextarea"></label>
                       </div>
                       <!-- Precio -->
                       <div class="input-group mb-3">
                         <span class="input-group-text">$</span>                        
-                        <input type="text" class="form-control" id="pre" placeholder="Precio del producto" aria-label="Dollar amount (with dot and two decimal places)">
+                        <input type="text" class="form-control" id="pre" placeholder="Precio del producto" aria-label="Dollar amount (with dot and two decimal places)" required>
                       </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary" onclick="crearNuevoProducto()">Cargar</button>
+                      <button type="button" class="btn btn-primary" id="cargarProducto">Cargar</button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
           </div>
@@ -224,38 +223,7 @@
           </div>
           </section>
 
-          <!-- <section id="vantana__modal" class="modal__inicio">
-            <div class="modal__contenedor">
-              
-                <h3 class="modal__titulo">¡Resumen de compra!</h3>              
-                        
-              <div class="modal__cuerpo">
-                <table class="">
-                  <thead class="tabla__cabecera">
-                    <tr>
-                      <th class="info__compra">Info Compra</th>
-                      <th class="info__compra">cantidad</th>
-                      <th class="detalle__compra">Precio</th>
-                      <th class="btn__eliminar"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      
-                    </tr>
-                  </tfoot>                  
-                </table>                
-              </div>            
-              
-              <div class="modal__cerrar">
-                <button class="modal__boton cerrar__modal">Cerrar</button>
-                <button class="modal__boton modal__comprar">Pagar</button>              
-              </div>
-            </div>
-          </section> -->
+
         </main>
     </div>
 
@@ -346,8 +314,9 @@
     </footer>
 
     <!-- JS -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../main.js"></script>    
+    <script src="../main.js" type="module"></script>    
   </body>
 </html>

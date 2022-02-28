@@ -1,26 +1,11 @@
+import { toastCompra, promoMes } from './javascript/app.js';
+import { Producto, Compra } from './javascript/class.js';
+
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
 
-function clickCompra() {
-  let toastLiveExample = document.getElementById("liveToast");
-  let toast = new bootstrap.Toast(toastLiveExample);
+let arrayFiltrado = [];
 
-  const hora = new Date();
-  const mes = hora.getMonth() + 1;
-
-  document.querySelector(".toast-header small").innerHTML = `${hora.getDate()}/${mes}/${hora.getFullYear()} - ${hora.getHours()}:${hora.getMinutes()}:${hora.getSeconds()}`;
-  toast.show();
-}
-
-const promoMes = () =>{
-  const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-  let date = new Date();
-  const mes = meses[date.getMonth()];
-  document.querySelector(".textMarca").innerHTML = `${mes}`;
-}
-
-let FILTRADO = [];
-
-const PRODUCTOS = [
+export const PRODUCTOS = [
   {
     nombre: "Semillas",
     id: "1",
@@ -47,40 +32,7 @@ const PRODUCTOS = [
   },
 ];
 
-let CARRITO = [];
-
-class Producto {
-  constructor(nombre, codigo, descripcion, precio, categoria) {
-    this.nombre = nombre;
-    this.id = codigo;
-    this.categoria = categoria;
-    this.descripcion = descripcion;
-    this.precio = precio;
-  }
-  cargarProductoNuevo(productoNuevo) {
-    PRODUCTOS.length === 0 && PRODUCTOS.push(productoNuevo),
-      crearTarjetaProducto(productoNuevo);
-    revisarCodigoProductoNuevo(PRODUCTOS, productoNuevo)
-      ? alert("Codigo Repetido")
-      : PRODUCTOS.push(productoNuevo),
-      crearTarjetaProducto(productoNuevo);
-  }
-}
-
-class Compra {
-  constructor(codigo, cantidad) {
-    this.nombre;
-    this.id = codigo;
-    this.cantidad = cantidad;
-    this.total;
-    this.precio;
-  }
-  cargarCompra(compraNueva) {
-    CARRITO.push(compraNueva);
-    document.querySelector("#cantComp").innerHTML = CARRITO.length;
-    changoNav();
-  }
-}
+export let arrayCarrito = [];
 
 const mostrarModalCarrito = () => {
 
@@ -121,7 +73,7 @@ const mostrarModalCarrito = () => {
                 <button class="modal__boton modal__comprar">Pagar</button>              
               </div>
             </div>`
-}
+};
 
 const filtroProductoMostrar = () => {
 
@@ -129,7 +81,7 @@ const filtroProductoMostrar = () => {
   for (const item of lista) {
     item.addEventListener("click", (evt) => {
       const categoriaId = evt.currentTarget.getAttribute("value");
-      FILTRADO = PRODUCTOS.filter((obj) => obj.categoria == categoriaId);
+      arrayFiltrado = PRODUCTOS.filter((obj) => obj.categoria == categoriaId);
       mostrarArregloProductos(categoriaId);
     });
   }
@@ -152,9 +104,9 @@ const mostrarArregloProductos = (categoriaId) => {
             crearTarjetaProducto(objProd);
           }
   } else {
-      if (FILTRADO.length !== 0) {
+      if (arrayFiltrado.length !== 0) {
         document.getElementById(`listaProductos`).innerHTML = "";
-        for (const objFilt of FILTRADO) {
+        for (const objFilt of arrayFiltrado) {
           crearTarjetaProducto(objFilt);
         }
       } else document.getElementById(`listaProductos`).innerHTML = "No hay Productos disponibles";
@@ -163,43 +115,43 @@ const mostrarArregloProductos = (categoriaId) => {
 };
 
 const mostrarCompra = () => {
-
   const tablaCuerpo = document.querySelector("tbody");
   tablaCuerpo.innerHTML = "";
+  const total = arrayCarrito.reduce((total, next) => (total += next.total), 0);
 
-  const total = CARRITO.reduce((total, next) => (total += next.total), 0);
-
-  for (const item of CARRITO) {
+  for (const item of arrayCarrito) {    
     const tr = document.createElement("tr");
     const cuerpo = tablaCuerpo.appendChild(tr);
     cuerpo.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
                         <td>${item.cantidad}</td>
                         <td>$${item.precio * item.cantidad}</td>
-                        <td><button type="button" class="btn btn-outline-info" onclick="eliminarCompra(${
-                          item.id
-                        })">X</button></td>`;
+                        <td><button type="button" class="btn btn-outline-info" value="${item.id}" id="eliminarCompra">X</button></td>`;
   }
   const tfoot = document.querySelector("tfoot tr");
   tfoot.innerHTML = ` <td></td>
                         <td></td>
                         <td>TOTAL: ${total}</td> `;
-};
 
-const revisarCodigoProductoNuevo = (arregloProductos, productoNuevo) => {
-  for (const obj of arregloProductos) {
-    if (obj.id === productoNuevo.id) {
-      return true;
-    }
-  }
+  const quitarCompra = document.querySelectorAll('#eliminarCompra');
+  for(const elemento of quitarCompra) 
+  elemento.addEventListener('click', (evt) => {
+    evt.preventDefault;
+   eliminarCompra(`${evt.target.attributes.value.value}`);
+  }); 
 };
 
 function crearNuevoProducto() {
-  let nombre = document.getElementById("nombre").value;
-  let codigo = document.getElementById("cod").value;
-  let categoria = document.querySelector("select").value;
-  let descripcion = document.getElementById("floatingTextarea").value;
-  let precio = parseFloat(document.getElementById("pre").value);
-  codigo = categoria + codigo;
+
+  let cargarProducto = document.querySelector('#cargarProducto');  
+  cargarProducto.addEventListener('click', (evt) => {  
+    evt.preventDefault;
+  
+   const nombre = document.getElementById("nombre").value;
+   let codigo = document.getElementById("cod").value;
+   const categoria = document.querySelector("select").value;
+   const descripcion = document.getElementById("floatingTextarea").value;
+   const precio = parseFloat(document.getElementById("pre").value);
+   codigo = categoria + codigo;
 
   if (!isNaN(precio)) {
     if (
@@ -217,30 +169,43 @@ function crearNuevoProducto() {
         categoria
       );
       productoNuevo.cargarProductoNuevo(productoNuevo);
-    } else alert("No dejar ningun campo vacio");
+      botonCompra();
+      limpiarCargaProducto();
+    } else Swal.fire("No dejar ningun campo vacio");
   } else {
-    alert("Escribir un precio con este formato: 0.00");
-  }
-  limpiarCargaProducto();
+    Swal.fire("Escribir un precio con este formato:$ 0.00");
+  }  
+  });
 }
 
-function cargarNuevaCompra(codigo) {
+function botonCompra(){
+  const compraNew = document.querySelectorAll('#chango');
+  for(const elemento of compraNew)
+  elemento.removeEventListener('click', cargarNuevaCompra);
+
+  for(const elemento of compraNew)
+  elemento.addEventListener('click', cargarNuevaCompra);  
+}
+
+function cargarNuevaCompra(evt) {
+  let codigo = evt.target.attributes.value.value; 
   let cantidad = parseInt(document.getElementById(`cant${codigo}`).value);
   const compraNueva = new Compra(codigo, cantidad);
   compraNueva.cargarCompra(compraNueva);
   PRODUCTOS.filter(arregloCompra);
-  cargaCarritoStorege(CARRITO);
+  cargaCarritoStorege(arrayCarrito);
 
   function arregloCompra(producto) {
-    for (const item of CARRITO) {
-      if (item.id == producto.id) {
-        item.total = item.cantidad * producto.precio;
-        item.nombre = producto.nombre;
-        item.precio = producto.precio;
-        return true;
-      }
+    for (const item of arrayCarrito) {
+      (item.id == producto.id) && 
+        ((item.total = item.cantidad * producto.precio),
+        (item.nombre = producto.nombre),
+        (item.precio = producto.precio)
+        )
     }
-  }
+  };
+
+
 }
 
 function modal() {
@@ -265,7 +230,7 @@ function modal() {
 
   cerrModal.addEventListener("click", (evt) => {
     evt.preventDefault();
-    CARRITO = [];
+    arrayCarrito = [];
     const chango = document.querySelector(".ocultar__chango");
     chango.classList.remove("mostrar--chango");
     modal.classList.remove("modal--show");
@@ -273,7 +238,7 @@ function modal() {
   });
 }
 
-function crearTarjetaProducto(productoNuevo) {
+export function crearTarjetaProducto(productoNuevo) {
   let etiqueta = document.createElement("li");
   etiqueta.setAttribute("class", "elementoLi");
   etiqueta.setAttribute("id", `${productoNuevo.id}`);
@@ -327,7 +292,7 @@ function crearTarjetaProducto(productoNuevo) {
                     <!-- Footer -->                      
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary" id="chango" onclick="cargarNuevaCompra(${productoNuevo.id})" data-bs-dismiss="modal">Comprar</button>
+                      <button type="button" class="btn btn-primary" id="chango" value="${productoNuevo.id}" data-bs-dismiss="modal">Comprar</button>
                     </div>
                   </div>
                 </div>
@@ -335,18 +300,18 @@ function crearTarjetaProducto(productoNuevo) {
           </li>`;
 }
 
-function changoNav() {
+export function changoNav() {
   const chango = document.querySelector(".ocultar__chango");
   chango.classList.add("mostrar--chango");  
 }
 
-function eliminarCompra(codigo) {
+function eliminarCompra(codigo) {  
   borrarStorageCompra();
-  CARRITO = CARRITO.filter((item) => item.id != codigo);
-  document.querySelector("#cantComp").innerHTML = CARRITO.length;
-  cargaCarritoStorege(CARRITO);
+  arrayCarrito = arrayCarrito.filter((item) => item.id != codigo);
+  document.querySelector("#cantComp").innerHTML = arrayCarrito.length;
+  cargaCarritoStorege(arrayCarrito);
   mostrarCompra();
-  if (CARRITO.length === 0) {
+  if (arrayCarrito.length === 0) {
     borrarStorageCompra();
     const chango = document.querySelector(".ocultar__chango");
     chango.classList.remove("mostrar--chango");
@@ -369,17 +334,17 @@ function descargarCarritoStorage() {
   descargaCarrito = JSON.parse(descargaCarrito);
   document.querySelector("#cantComp").innerHTML = descargaCarrito.length;
 
-  CARRITO = descargaCarrito;
-}
+  arrayCarrito = descargaCarrito;
+} 
 
 modal();
 
-window.location.pathname === "/index.html" && (promoMes());
-window.location.pathname === "/html/products.html" && (mostrarArregloProductos(),
-filtroProductoMostrar());
 
-window.location.pathname === "/coder-javascript/index.html" && (promoMes(), modal());
+window.location.pathname === "/index.html" && (promoMes(),toastCompra());
+window.location.pathname === "/html/products.html" && (mostrarArregloProductos(),
+filtroProductoMostrar(), crearNuevoProducto(), botonCompra());
+
+window.location.pathname === "/coder-javascript/index.html" && (promoMes(),toastCompra());
 window.location.pathname === "/coder-javascript/html/products.html" && (mostrarArregloProductos(),
-filtroProductoMostrar(),
-modal());
+filtroProductoMostrar(),crearNuevoProducto(), botonCompra());
  
