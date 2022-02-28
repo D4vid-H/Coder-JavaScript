@@ -91,7 +91,6 @@ const limpiarCargaProducto = () => {
   document.getElementById("nombre").value = "";
   document.getElementById("cod").value = "";
   document.querySelector("select").value = "0";
-  document.getElementById("stock").value = "00";
   document.getElementById("floatingTextarea").value = "";
   document.getElementById("pre").value = "";
 };
@@ -152,29 +151,15 @@ function crearNuevoProducto() {
    const descripcion = document.getElementById("floatingTextarea").value;
    const precio = parseFloat(document.getElementById("pre").value);
    codigo = categoria + codigo;
+   let productoNuevo;
 
-  if (!isNaN(precio)) {
-    if (
-      nombre != "" &&
-      codigo != "" &&
-      descripcion != "" &&
-      precio != "" &&
-      categoria != "0"
-    ) {
-      const productoNuevo = new Producto(
-        nombre,
-        codigo,
-        descripcion,
-        precio,
-        categoria
-      );
-      productoNuevo.cargarProductoNuevo(productoNuevo);
-      botonCompra();
-      limpiarCargaProducto();
-    } else Swal.fire("No dejar ningun campo vacio");
-  } else {
-    Swal.fire("Escribir un precio con este formato:$ 0.00");
-  }  
+  (!isNaN(precio)) ? ((nombre != "" && codigo != "" && descripcion != "" && precio != "" && categoria != "0") ? (productoNuevo = new Producto(nombre,codigo,descripcion,precio,categoria),
+      productoNuevo.cargarProductoNuevo(productoNuevo),
+      botonCompra(),
+      limpiarCargaProducto())
+    : Swal.fire("No dejar ningun campo vacio"))
+  :Swal.fire("Escribir un precio con este formato:$ 0.00");
+   
   });
 }
 
@@ -282,7 +267,7 @@ export function crearTarjetaProducto(productoNuevo) {
                               </div>
                               <div class="row gap-2 input-group mb-1">
                                 <input type="number" id="cant${productoNuevo.id}" class="col-sm-2 form-control" value="1" aria-label="Zip">
-                                <span class="col-sm-5 input-group-text">Stock: 00</span>                                    
+                                <span class="col-sm-5 input-group-text">Stock: infinit</span>                                    
                               </div>
                             </div>
                           </div>
