@@ -79,7 +79,13 @@
                 <a class="nav-link" href="./html/login.html">Login</a>
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link lanzar__modal ocultar__chango" href="#"><img src="./img/changuito.png" alt="chango de compras" class="imagen__chango"><div id="cantComp" class="comColor"></div></a>
+                <a class="nav-link lanzar__modal ocultar__chango" href="#"
+                  ><img
+                    src="./img/changuito.png"
+                    alt="chango de compras"
+                    class="imagen__chango" />
+                  <div id="cantComp" class="comColor"></div
+                ></a>
               </li>
             </ul>
           </div>
@@ -162,47 +168,14 @@
                     type="button"
                     class="btn btn-success"
                     id="liveToastBtn"
-                    
                   >
                     Comprar
                   </button>
-
-                  <div
-                    class="position-fixed bottom-0 end-0 p-3"
-                    style="z-index: 11"
-                    >
-                    <div
-                      id="liveToast"
-                      class="toast"
-                      role="alert"
-                      aria-live="assertive"
-                      aria-atomic="true"
-                      >
-                      <div class="toast-header">
-                        <img
-                          src="img/marca2.webp"
-                          class="rounded me-2"
-                          alt="logotipo"
-                          width="50"
-                        />
-                        <strong class="me-auto">Ecotienda.</strong>
-                        <small>11 mins ago</small>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="toast"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                      <div class="toast-body text-dark">
-                        ¡Gracias por tu compra!.
-                      </div>
-                    </div>
-                  </div>
+                  <div id="contenToast"></div>
                 </div>
               </div>
             </div>
-            
+
             <div class="col">
               <div class="card text-white bg-secondary shadow-lg">
                 <img
@@ -220,7 +193,6 @@
                     type="button"
                     class="btn btn-success"
                     id="liveToastBtn"
-                    
                   >
                     Comprar
                   </button>
@@ -249,7 +221,6 @@
                     type="button"
                     class="btn btn-success"
                     id="liveToastBtn"
-                    
                   >
                     Comprar
                   </button>
@@ -279,7 +250,6 @@
                     type="button"
                     class="btn btn-success"
                     id="liveToastBtn"
-                    
                   >
                     Comprar
                   </button>
@@ -419,8 +389,8 @@
 
     <!-- JS -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>      
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="./bootstrap/js/bootstrap.min.js"></script>
-    <script src="main.js" type="module"></script>  
+    <script src="main.js" type="module"></script>
   </body>
 </html>

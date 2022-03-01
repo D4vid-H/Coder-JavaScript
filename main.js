@@ -1,9 +1,12 @@
-import { toastCompra, promoMes } from './javascript/app.js';
-import { Producto, Compra } from './javascript/class.js';
+import { toastCompra, promoMes } from "./javascript/app.js";
+import { Producto, Compra } from "./javascript/class.js";
+import { borrarStorageCompra, cargaCarritoStorege, descargarCarritoStorage } from "./javascript/localStorage.js";
+import { filtroProductoMostrar, mostrarArregloProductos } from "./javascript/filtroProducto.js";
+
 
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
 
-let arrayFiltrado = [];
+export const arrayFiltrado = [];
 
 export const PRODUCTOS = [
   {
@@ -35,15 +38,14 @@ export const PRODUCTOS = [
 export let arrayCarrito = [];
 
 const mostrarModalCarrito = () => {
+  const seccion = document.createElement("section");
+  seccion.setAttribute("id", "vantana__modal");
+  seccion.setAttribute("class", "modal__inicio");
+  document.querySelector("main").appendChild(seccion);
 
-
-  const seccion = document.createElement('section');
-  seccion.setAttribute('id', 'vantana__modal');
-  seccion.setAttribute('class', 'modal__inicio');
-  document.querySelector('main').appendChild(seccion);
-
-  document.querySelector('#vantana__modal').innerHTML = 
-  `<div class="modal__contenedor">
+  document.querySelector(
+    "#vantana__modal"
+  ).innerHTML = `<div class="modal__contenedor">
               <!--head -->
                 <h3 class="modal__titulo">¡Resumen de compra!</h3>              
              <!--body-->             
@@ -72,11 +74,10 @@ const mostrarModalCarrito = () => {
                 <button class="modal__boton cerrar__modal">Cerrar</button>
                 <button class="modal__boton modal__comprar">Pagar</button>              
               </div>
-            </div>`
+            </div>`;
 };
 
-const filtroProductoMostrar = () => {
-
+/* const filtroProductoMostrar = () => {
   const lista = document.querySelectorAll(".elementoLi1 a");
   for (const item of lista) {
     item.addEventListener("click", (evt) => {
@@ -85,7 +86,7 @@ const filtroProductoMostrar = () => {
       mostrarArregloProductos(categoriaId);
     });
   }
-};
+}; */
 
 const limpiarCargaProducto = () => {
   document.getElementById("nombre").value = "";
@@ -95,108 +96,107 @@ const limpiarCargaProducto = () => {
   document.getElementById("pre").value = "";
 };
 
-const mostrarArregloProductos = (categoriaId) => {
-
-  if(categoriaId === undefined || categoriaId === '0'){
-    document.getElementById(`listaProductos`).innerHTML = "";
-          for (const objProd of PRODUCTOS) {
-            crearTarjetaProducto(objProd);
-          }
-  } else {
-      if (arrayFiltrado.length !== 0) {
-        document.getElementById(`listaProductos`).innerHTML = "";
-        for (const objFilt of arrayFiltrado) {
-          crearTarjetaProducto(objFilt);
-        }
-      } else document.getElementById(`listaProductos`).innerHTML = "No hay Productos disponibles";
-    }
-
-};
+/* const mostrarArregloProductos = (categoriaId) => {
+  categoriaId === undefined || categoriaId === "0"
+    ? ((document.getElementById(`listaProductos`).innerHTML = ""),
+      PRODUCTOS.forEach((objProd) => crearTarjetaProducto(objProd)))
+    : arrayFiltrado.length !== 0
+    ? ((document.getElementById(`listaProductos`).innerHTML = ""),
+      arrayFiltrado.forEach((objFilt) => crearTarjetaProducto(objFilt)))
+    : (document.getElementById(`listaProductos`).innerHTML =
+        "No hay Productos disponibles");
+}; */
 
 const mostrarCompra = () => {
   const tablaCuerpo = document.querySelector("tbody");
   tablaCuerpo.innerHTML = "";
   const total = arrayCarrito.reduce((total, next) => (total += next.total), 0);
 
-  for (const item of arrayCarrito) {    
+  for (const item of arrayCarrito) {
     const tr = document.createElement("tr");
     const cuerpo = tablaCuerpo.appendChild(tr);
     cuerpo.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
                         <td>${item.cantidad}</td>
                         <td>$${item.precio * item.cantidad}</td>
-                        <td><button type="button" class="btn btn-outline-info" value="${item.id}" id="eliminarCompra">X</button></td>`;
+                        <td><button type="button" class="btn btn-outline-info" value="${
+                          item.id
+                        }" id="eliminarCompra">X</button></td>`;
   }
   const tfoot = document.querySelector("tfoot tr");
   tfoot.innerHTML = ` <td></td>
                         <td></td>
                         <td>TOTAL: ${total}</td> `;
 
-  const quitarCompra = document.querySelectorAll('#eliminarCompra');
-  for(const elemento of quitarCompra) 
-  elemento.addEventListener('click', (evt) => {
-    evt.preventDefault;
-   eliminarCompra(`${evt.target.attributes.value.value}`);
-  }); 
+  const quitarCompra = document.querySelectorAll("#eliminarCompra");
+  for (const elemento of quitarCompra)
+    elemento.addEventListener("click", (evt) => {
+      evt.preventDefault;
+      eliminarCompra(`${evt.target.attributes.value.value}`);
+    });
 };
 
 function crearNuevoProducto() {
-
-  let cargarProducto = document.querySelector('#cargarProducto');  
-  cargarProducto.addEventListener('click', (evt) => {  
+  let cargarProducto = document.querySelector("#cargarProducto");
+  cargarProducto.addEventListener("click", (evt) => {
     evt.preventDefault;
-  
-   const nombre = document.getElementById("nombre").value;
-   let codigo = document.getElementById("cod").value;
-   const categoria = document.querySelector("select").value;
-   const descripcion = document.getElementById("floatingTextarea").value;
-   const precio = parseFloat(document.getElementById("pre").value);
-   codigo = categoria + codigo;
-   let productoNuevo;
 
-  (!isNaN(precio)) ? ((nombre != "" && codigo != "" && descripcion != "" && precio != "" && categoria != "0") ? (productoNuevo = new Producto(nombre,codigo,descripcion,precio,categoria),
-      productoNuevo.cargarProductoNuevo(productoNuevo),
-      botonCompra(),
-      limpiarCargaProducto())
-    : Swal.fire("No dejar ningun campo vacio"))
-  :Swal.fire("Escribir un precio con este formato:$ 0.00");
-   
+    const nombre = document.getElementById("nombre").value;
+    let codigo = document.getElementById("cod").value;
+    const categoria = document.querySelector("select").value;
+    const descripcion = document.getElementById("floatingTextarea").value;
+    const precio = parseFloat(document.getElementById("pre").value);
+    codigo = categoria + codigo;
+    let productoNuevo;
+
+    !isNaN(precio)
+      ? nombre != "" &&
+        codigo != "" &&
+        descripcion != "" &&
+        precio != "" &&
+        categoria != "0"
+        ? ((productoNuevo = new Producto(
+            nombre,
+            codigo,
+            descripcion,
+            precio,
+            categoria
+          )),
+          productoNuevo.cargarProductoNuevo(productoNuevo),
+          botonCompra(),
+          limpiarCargaProducto())
+        : Swal.fire("No dejar ningun campo vacio")
+      : Swal.fire("Escribir un precio con este formato:$ 0.00");
   });
 }
 
-function botonCompra(){
-  const compraNew = document.querySelectorAll('#chango');
-  for(const elemento of compraNew)
-  elemento.removeEventListener('click', cargarNuevaCompra);
-
-  for(const elemento of compraNew)
-  elemento.addEventListener('click', cargarNuevaCompra);  
+function botonCompra() {
+  document.querySelectorAll("#chango").forEach(elemento => elemento.removeEventListener("click", cargarNuevaCompra));
+  document.querySelectorAll("#chango").forEach(elemento => elemento.addEventListener("click", cargarNuevaCompra)); 
 }
 
 function cargarNuevaCompra(evt) {
-  let codigo = evt.target.attributes.value.value; 
-  let cantidad = parseInt(document.getElementById(`cant${codigo}`).value);
+  const codigo = evt.target.attributes.value.value;
+  const cantidad = parseInt(document.getElementById(`cant${codigo}`).value);
   const compraNueva = new Compra(codigo, cantidad);
   compraNueva.cargarCompra(compraNueva);
-  PRODUCTOS.filter(arregloCompra);
+  PRODUCTOS.forEach(arregloCompra);
   cargaCarritoStorege(arrayCarrito);
 
   function arregloCompra(producto) {
     for (const item of arrayCarrito) {
-      (item.id == producto.id) && 
+      item.id == producto.id &&
         ((item.total = item.cantidad * producto.precio),
         (item.nombre = producto.nombre),
-        (item.precio = producto.precio)
-        )
+        (item.precio = producto.precio));
     }
-  };
-
-
+  }
 }
 
 function modal() {
-  localStorage.getItem("carritoCompra") && (changoNav(), descargarCarritoStorage());
+  localStorage.getItem("carritoCompra") &&
+    (changoNav(), descargarCarritoStorage());
   mostrarModalCarrito();
-  
+
   const abrirModal = document.querySelector(".lanzar__modal");
   const cerrarModal = document.querySelector(".cerrar__modal");
   const cerrModal = document.querySelector(".modal__comprar");
@@ -287,49 +287,35 @@ export function crearTarjetaProducto(productoNuevo) {
 
 export function changoNav() {
   const chango = document.querySelector(".ocultar__chango");
-  chango.classList.add("mostrar--chango");  
+  chango.classList.add("mostrar--chango");
 }
 
-function eliminarCompra(codigo) {  
+function eliminarCompra(codigo) {
   borrarStorageCompra();
   arrayCarrito = arrayCarrito.filter((item) => item.id != codigo);
   document.querySelector("#cantComp").innerHTML = arrayCarrito.length;
   cargaCarritoStorege(arrayCarrito);
   mostrarCompra();
-  if (arrayCarrito.length === 0) {
-    borrarStorageCompra();
-    const chango = document.querySelector(".ocultar__chango");
-    chango.classList.remove("mostrar--chango");
-    const modal = document.querySelector("#vantana__modal");
-    modal.classList.remove("modal--show");
-  }
+  (arrayCarrito.length === 0) && (
+    borrarStorageCompra(),
+    document.querySelector(".ocultar__chango").classList.remove("mostrar--chango"),
+    document.querySelector("#vantana__modal").classList.remove("modal--show")    
+  );
 }
-
-function cargaCarritoStorege(carrito) {
-  const esJSON = JSON.stringify(carrito);
-  localStorage.setItem("carritoCompra", esJSON);
-}
-
-function borrarStorageCompra() {
-  localStorage.removeItem("carritoCompra");
-}
-
-function descargarCarritoStorage() {
-  let descargaCarrito = localStorage.getItem("carritoCompra");
-  descargaCarrito = JSON.parse(descargaCarrito);
-  document.querySelector("#cantComp").innerHTML = descargaCarrito.length;
-
-  arrayCarrito = descargaCarrito;
-} 
 
 modal();
 
+window.location.pathname === "/index.html" && (promoMes(), toastCompra());
+window.location.pathname === "/html/products.html" &&
+  (mostrarArregloProductos(),
+  filtroProductoMostrar(),
+  crearNuevoProducto(),
+  botonCompra());
 
-window.location.pathname === "/index.html" && (promoMes(),toastCompra());
-window.location.pathname === "/html/products.html" && (mostrarArregloProductos(),
-filtroProductoMostrar(), crearNuevoProducto(), botonCompra());
-
-window.location.pathname === "/coder-javascript/index.html" && (promoMes(),toastCompra());
-window.location.pathname === "/coder-javascript/html/products.html" && (mostrarArregloProductos(),
-filtroProductoMostrar(),crearNuevoProducto(), botonCompra());
- 
+window.location.pathname === "/coder-javascript/index.html" &&
+  (promoMes(), toastCompra());
+window.location.pathname === "/coder-javascript/html/products.html" &&
+  (mostrarArregloProductos(),
+  filtroProductoMostrar(),
+  crearNuevoProducto(),
+  botonCompra());
