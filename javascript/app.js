@@ -33,8 +33,7 @@ export const promoMes = () => {
     "Noviembre",
     "Diciembre",
   ];
-  const date = new Date();
-  const mes = meses[date.getMonth()];
+  const mes = meses[new Date().getMonth()];
   document.querySelector(".textMarca").innerHTML = `${mes}`;
 };
 

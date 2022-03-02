@@ -1,8 +1,14 @@
 import { toastCompra, promoMes } from "./javascript/app.js";
 import { Producto, Compra } from "./javascript/class.js";
-import { borrarStorageCompra, cargaCarritoStorege, descargarCarritoStorage } from "./javascript/localStorage.js";
-import { filtroProductoMostrar, mostrarArregloProductos } from "./javascript/filtroProducto.js";
-
+import {
+  borrarStorageCompra,
+  cargaCarritoStorege,
+  descargarCarritoStorage,
+} from "./javascript/localStorage.js";
+import {
+  filtroProductoMostrar,
+  mostrarArregloProductos,
+} from "./javascript/filtroProducto.js";
 
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
 
@@ -77,17 +83,6 @@ const mostrarModalCarrito = () => {
             </div>`;
 };
 
-/* const filtroProductoMostrar = () => {
-  const lista = document.querySelectorAll(".elementoLi1 a");
-  for (const item of lista) {
-    item.addEventListener("click", (evt) => {
-      const categoriaId = evt.currentTarget.getAttribute("value");
-      arrayFiltrado = PRODUCTOS.filter((obj) => obj.categoria == categoriaId);
-      mostrarArregloProductos(categoriaId);
-    });
-  }
-}; */
-
 const limpiarCargaProducto = () => {
   document.getElementById("nombre").value = "";
   document.getElementById("cod").value = "";
@@ -96,25 +91,13 @@ const limpiarCargaProducto = () => {
   document.getElementById("pre").value = "";
 };
 
-/* const mostrarArregloProductos = (categoriaId) => {
-  categoriaId === undefined || categoriaId === "0"
-    ? ((document.getElementById(`listaProductos`).innerHTML = ""),
-      PRODUCTOS.forEach((objProd) => crearTarjetaProducto(objProd)))
-    : arrayFiltrado.length !== 0
-    ? ((document.getElementById(`listaProductos`).innerHTML = ""),
-      arrayFiltrado.forEach((objFilt) => crearTarjetaProducto(objFilt)))
-    : (document.getElementById(`listaProductos`).innerHTML =
-        "No hay Productos disponibles");
-}; */
-
 const mostrarCompra = () => {
-  const tablaCuerpo = document.querySelector("tbody");
-  tablaCuerpo.innerHTML = "";
+  document.querySelector("tbody").innerHTML = "";
   const total = arrayCarrito.reduce((total, next) => (total += next.total), 0);
 
   for (const item of arrayCarrito) {
     const tr = document.createElement("tr");
-    const cuerpo = tablaCuerpo.appendChild(tr);
+    const cuerpo = document.querySelector("tbody").appendChild(tr);
     cuerpo.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
                         <td>${item.cantidad}</td>
                         <td>$${item.precio * item.cantidad}</td>
@@ -122,8 +105,7 @@ const mostrarCompra = () => {
                           item.id
                         }" id="eliminarCompra">X</button></td>`;
   }
-  const tfoot = document.querySelector("tfoot tr");
-  tfoot.innerHTML = ` <td></td>
+  document.querySelector("tfoot tr").innerHTML = ` <td></td>
                         <td></td>
                         <td>TOTAL: ${total}</td> `;
 
@@ -170,8 +152,16 @@ function crearNuevoProducto() {
 }
 
 function botonCompra() {
-  document.querySelectorAll("#chango").forEach(elemento => elemento.removeEventListener("click", cargarNuevaCompra));
-  document.querySelectorAll("#chango").forEach(elemento => elemento.addEventListener("click", cargarNuevaCompra)); 
+  document
+    .querySelectorAll("#chango")
+    .forEach((elemento) =>
+      elemento.removeEventListener("click", cargarNuevaCompra)
+    );
+  document
+    .querySelectorAll("#chango")
+    .forEach((elemento) =>
+      elemento.addEventListener("click", cargarNuevaCompra)
+    );
 }
 
 function cargarNuevaCompra(evt) {
@@ -286,8 +276,7 @@ export function crearTarjetaProducto(productoNuevo) {
 }
 
 export function changoNav() {
-  const chango = document.querySelector(".ocultar__chango");
-  chango.classList.add("mostrar--chango");
+  document.querySelector(".ocultar__chango").classList.add("mostrar--chango");
 }
 
 function eliminarCompra(codigo) {
@@ -296,25 +285,20 @@ function eliminarCompra(codigo) {
   document.querySelector("#cantComp").innerHTML = arrayCarrito.length;
   cargaCarritoStorege(arrayCarrito);
   mostrarCompra();
-  (arrayCarrito.length === 0) && (
-    borrarStorageCompra(),
-    document.querySelector(".ocultar__chango").classList.remove("mostrar--chango"),
-    document.querySelector("#vantana__modal").classList.remove("modal--show")    
-  );
+  arrayCarrito.length === 0 &&
+    (borrarStorageCompra(),
+    document
+      .querySelector(".ocultar__chango")
+      .classList.remove("mostrar--chango"),
+    document.querySelector("#vantana__modal").classList.remove("modal--show"));
 }
 
 modal();
 
-window.location.pathname === "/index.html" && (promoMes(), toastCompra());
-window.location.pathname === "/html/products.html" &&
-  (mostrarArregloProductos(),
-  filtroProductoMostrar(),
-  crearNuevoProducto(),
-  botonCompra());
+const arrayPath = window.location.pathname.split("/");
 
-window.location.pathname === "/coder-javascript/index.html" &&
-  (promoMes(), toastCompra());
-window.location.pathname === "/coder-javascript/html/products.html" &&
+arrayPath[arrayPath.length - 1] === "index.html" && (promoMes(), toastCompra());
+arrayPath[arrayPath.length - 1] === "products.html" &&
   (mostrarArregloProductos(),
   filtroProductoMostrar(),
   crearNuevoProducto(),

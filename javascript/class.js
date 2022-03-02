@@ -16,18 +16,10 @@ export class Producto {
   cargarProductoNuevo(productoNuevo) {
     PRODUCTOS.length === 0 && PRODUCTOS.push(productoNuevo),
       crearTarjetaProducto(productoNuevo);
-    revisarCodigoProductoNuevo(PRODUCTOS, productoNuevo)
+    PRODUCTOS.some((item) => item.id === productoNuevo.id)
       ? alert("Codigo Repetido")
       : PRODUCTOS.push(productoNuevo),
       crearTarjetaProducto(productoNuevo);
-
-    function revisarCodigoProductoNuevo(arregloProductos, productoNuevo) {
-      for (const obj of arregloProductos) {
-        if (obj.id === productoNuevo.id) {
-          return true;
-        }
-      }
-    }
   }
 }
 
@@ -40,16 +32,13 @@ export class Compra {
     this.precio;
   }
   cargarCompra(compraNueva) {
-    arrayCarrito.some((element) => element.id === compraNueva.id)
-      ? sumarCompra(compraNueva)
-      : (arrayCarrito.push(compraNueva),
-        (document.querySelector("#cantComp").innerHTML = arrayCarrito.length),
-        changoNav());
-
-    function sumarCompra(compraNueva) {
-      for (const item of arrayCarrito) {
-        item.id == compraNueva.id && (item.cantidad += compraNueva.cantidad);
-      }
-    }
+    arrayCarrito.some(
+      (element) =>
+        element.id === compraNueva.id &&
+        (element.cantidad += compraNueva.cantidad)
+    ) ||
+      (arrayCarrito.push(compraNueva),
+      (document.querySelector("#cantComp").innerHTML = arrayCarrito.length),
+      changoNav());
   }
 }
