@@ -5,40 +5,9 @@ import {
   mostrarArregloProductos,
 } from "./javascript/filtroProducto.js";
 import { botonCompra, mostrarCompra } from "./javascript/carrito.js";
-import { crearNuevoProducto } from './javascript/producto.js';
+import { crearNuevoProducto } from "./javascript/producto.js";
 
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
-
-export const arrayFiltrado = [];
-
-export const PRODUCTOS = [
-  {
-    nombre: "Semillas",
-    id: "1",
-    categoria: "5",
-    descripcion:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
-    precio: 23,
-  },
-  {
-    nombre: "Especias",
-    id: "2",
-    categoria: "10",
-    descripcion:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
-    precio: 55,
-  },
-  {
-    nombre: "Legumbres",
-    id: "3",
-    categoria: "7",
-    descripcion:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
-    precio: 74,
-  },
-];
-
-export let arrayCarrito = [];
 
 const mostrarModalCarrito = () => {
   const seccion = document.createElement("section");

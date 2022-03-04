@@ -1,4 +1,4 @@
-import { PRODUCTOS, arrayCarrito } from "../main.js";
+import { PRODUCTOS, arrayCarrito } from "./arrays.js";
 import { borrarStorageCompra, cargaCarritoStorege } from "./localStorage.js";
 import { Compra } from "./class.js";
 
@@ -21,29 +21,29 @@ export function cargarNuevaCompra(evt) {
 }
 
 export const mostrarCompra = () => {
-    document.querySelector("tbody").innerHTML = "";
-    const total = arrayCarrito.reduce((total, next) => (total += next.total), 0);
-  
-    for (const item of arrayCarrito) {
-      const tr = document.createElement("tr");
-      const cuerpo = document.querySelector("tbody").appendChild(tr);
-      cuerpo.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
+  document.querySelector("tbody").innerHTML = "";
+  const total = arrayCarrito.reduce((total, next) => (total += next.total), 0);
+
+  for (const item of arrayCarrito) {
+    const tr = document.createElement("tr");
+    const cuerpo = document.querySelector("tbody").appendChild(tr);
+    cuerpo.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
                           <td>${item.cantidad}</td>
                           <td>$${item.precio * item.cantidad}</td>
                           <td><button type="button" class="btn btn-outline-info" value="${
                             item.id
                           }" id="eliminarCompra">X</button></td>`;
-    }
-    document.querySelector("tfoot tr").innerHTML = ` <td></td>
+  }
+  document.querySelector("tfoot tr").innerHTML = ` <td></td>
                           <td></td>
                           <td>TOTAL: ${total}</td> `;
-  
-    const quitarCompra = document.querySelectorAll("#eliminarCompra");
-    for (const elemento of quitarCompra)
-      elemento.addEventListener("click", (evt) => {
-        evt.preventDefault;
-        eliminarCompra(`${evt.target.attributes.value.value}`);
-      });
+
+  const quitarCompra = document.querySelectorAll("#eliminarCompra");
+  for (const elemento of quitarCompra)
+    elemento.addEventListener("click", (evt) => {
+      evt.preventDefault;
+      eliminarCompra(`${evt.target.attributes.value.value}`);
+    });
 };
 
 export function eliminarCompra(codigo) {
@@ -64,14 +64,14 @@ export function eliminarCompra(codigo) {
 }
 
 export function botonCompra() {
-    document
-      .querySelectorAll("#chango")
-      .forEach((elemento) =>
-        elemento.removeEventListener("click", cargarNuevaCompra)
-      );
-    document
-      .querySelectorAll("#chango")
-      .forEach((elemento) =>
-        elemento.addEventListener("click", cargarNuevaCompra)
-      );
+  document
+    .querySelectorAll("#chango")
+    .forEach((elemento) =>
+      elemento.removeEventListener("click", cargarNuevaCompra)
+    );
+  document
+    .querySelectorAll("#chango")
+    .forEach((elemento) =>
+      elemento.addEventListener("click", cargarNuevaCompra)
+    );
 }

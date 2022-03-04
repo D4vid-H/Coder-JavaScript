@@ -1,4 +1,5 @@
-import { arrayFiltrado, crearTarjetaProducto, PRODUCTOS } from "../main.js";
+import { crearTarjetaProducto } from "../main.js";
+import { PRODUCTOS, arrayFiltrado } from "./arrays.js";
 
 export const filtroProductoMostrar = () => {
   const lista = document.querySelectorAll(".elementoLi1 a");

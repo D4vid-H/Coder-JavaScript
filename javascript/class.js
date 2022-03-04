@@ -1,9 +1,5 @@
-import {
-  changoNav,
-  crearTarjetaProducto,
-  PRODUCTOS,
-  arrayCarrito,
-} from "../main.js";
+import { changoNav, crearTarjetaProducto } from "../main.js";
+import { PRODUCTOS, arrayCarrito, PRODUCTOSBORRADOS } from "./arrays.js";
 
 export class Producto {
   constructor(nombre, codigo, descripcion, precio, categoria) {
@@ -20,6 +16,13 @@ export class Producto {
       ? alert("Codigo Repetido")
       : PRODUCTOS.push(productoNuevo),
       crearTarjetaProducto(productoNuevo);
+  }
+  borrarProducto(producto) {
+    const arrayAux = PRODUCTOS.splice(
+      PRODUCTOS.findIndex((item) => item.id === producto.id),
+      1
+    );
+    arrayAux.forEach((item) => PRODUCTOSBORRADOS.push(item));
   }
 }
 
