@@ -1,14 +1,11 @@
 import { toastCompra, promoMes } from "./javascript/app.js";
-import { Producto, Compra } from "./javascript/class.js";
-import {
-  borrarStorageCompra,
-  cargaCarritoStorege,
-  descargarCarritoStorage,
-} from "./javascript/localStorage.js";
+import { descargarCarritoStorage } from "./javascript/localStorage.js";
 import {
   filtroProductoMostrar,
   mostrarArregloProductos,
 } from "./javascript/filtroProducto.js";
+import { botonCompra, mostrarCompra } from "./javascript/carrito.js";
+import { crearNuevoProducto } from './javascript/producto.js';
 
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
 
@@ -82,105 +79,6 @@ const mostrarModalCarrito = () => {
               </div>
             </div>`;
 };
-
-const limpiarCargaProducto = () => {
-  document.getElementById("nombre").value = "";
-  document.getElementById("cod").value = "";
-  document.querySelector("select").value = "0";
-  document.getElementById("floatingTextarea").value = "";
-  document.getElementById("pre").value = "";
-};
-
-const mostrarCompra = () => {
-  document.querySelector("tbody").innerHTML = "";
-  const total = arrayCarrito.reduce((total, next) => (total += next.total), 0);
-
-  for (const item of arrayCarrito) {
-    const tr = document.createElement("tr");
-    const cuerpo = document.querySelector("tbody").appendChild(tr);
-    cuerpo.innerHTML += `<td>${item.nombre} - $${item.precio}</td>
-                        <td>${item.cantidad}</td>
-                        <td>$${item.precio * item.cantidad}</td>
-                        <td><button type="button" class="btn btn-outline-info" value="${
-                          item.id
-                        }" id="eliminarCompra">X</button></td>`;
-  }
-  document.querySelector("tfoot tr").innerHTML = ` <td></td>
-                        <td></td>
-                        <td>TOTAL: ${total}</td> `;
-
-  const quitarCompra = document.querySelectorAll("#eliminarCompra");
-  for (const elemento of quitarCompra)
-    elemento.addEventListener("click", (evt) => {
-      evt.preventDefault;
-      eliminarCompra(`${evt.target.attributes.value.value}`);
-    });
-};
-
-function crearNuevoProducto() {
-  let cargarProducto = document.querySelector("#cargarProducto");
-  cargarProducto.addEventListener("click", (evt) => {
-    evt.preventDefault;
-
-    const nombre = document.getElementById("nombre").value;
-    let codigo = document.getElementById("cod").value;
-    const categoria = document.querySelector("select").value;
-    const descripcion = document.getElementById("floatingTextarea").value;
-    const precio = parseFloat(document.getElementById("pre").value);
-    codigo = categoria + codigo;
-    let productoNuevo;
-
-    !isNaN(precio)
-      ? nombre != "" &&
-        codigo != "" &&
-        descripcion != "" &&
-        precio != "" &&
-        categoria != "0"
-        ? ((productoNuevo = new Producto(
-            nombre,
-            codigo,
-            descripcion,
-            precio,
-            categoria
-          )),
-          productoNuevo.cargarProductoNuevo(productoNuevo),
-          botonCompra(),
-          limpiarCargaProducto())
-        : Swal.fire("No dejar ningun campo vacio")
-      : Swal.fire("Escribir un precio con este formato:$ 0.00");
-  });
-}
-
-function botonCompra() {
-  document
-    .querySelectorAll("#chango")
-    .forEach((elemento) =>
-      elemento.removeEventListener("click", cargarNuevaCompra)
-    );
-  document
-    .querySelectorAll("#chango")
-    .forEach((elemento) =>
-      elemento.addEventListener("click", cargarNuevaCompra)
-    );
-}
-
-function cargarNuevaCompra(evt) {
-  const codigo = evt.target.attributes.value.value;
-  const cantidad = parseInt(document.getElementById(`cant${codigo}`).value);
-  const compraNueva = new Compra(codigo, cantidad);
-  compraNueva.cargarCompra(compraNueva);
-  PRODUCTOS.forEach(arregloCompra);
-  cargaCarritoStorege(arrayCarrito);
-
-  function arregloCompra(producto) {
-    for (const item of arrayCarrito) {
-      item.id == producto.id &&
-        ((item.total = item.cantidad * producto.precio),
-        (item.nombre = producto.nombre),
-        (item.precio = producto.precio));
-    }
-  }
-}
 
 function modal() {
   localStorage.getItem("carritoCompra") &&
@@ -277,20 +175,6 @@ export function crearTarjetaProducto(productoNuevo) {
 
 export function changoNav() {
   document.querySelector(".ocultar__chango").classList.add("mostrar--chango");
-}
-
-function eliminarCompra(codigo) {
-  borrarStorageCompra();
-  arrayCarrito = arrayCarrito.filter((item) => item.id != codigo);
-  document.querySelector("#cantComp").innerHTML = arrayCarrito.length;
-  cargaCarritoStorege(arrayCarrito);
-  mostrarCompra();
-  arrayCarrito.length === 0 &&
-    (borrarStorageCompra(),
-    document
-      .querySelector(".ocultar__chango")
-      .classList.remove("mostrar--chango"),
-    document.querySelector("#vantana__modal").classList.remove("modal--show"));
 }
 
 modal();
