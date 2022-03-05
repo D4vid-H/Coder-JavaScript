@@ -6,6 +6,7 @@ import {
 } from "./javascript/filtroProducto.js";
 import { botonCompra, mostrarCompra } from "./javascript/carrito.js";
 import { crearNuevoProducto } from "./javascript/producto.js";
+import { arrayCarrito } from "./javascript/arrays.js";
 
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
 
@@ -72,7 +73,8 @@ function modal() {
 
   cerrModal.addEventListener("click", (evt) => {
     evt.preventDefault();
-    arrayCarrito = [];
+    debugger
+    arrayCarrito.forEach(() => arrayCarrito.shift()); 
     const chango = document.querySelector(".ocultar__chango");
     chango.classList.remove("mostrar--chango");
     modal.classList.remove("modal--show");
