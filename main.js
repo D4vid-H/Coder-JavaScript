@@ -67,16 +67,16 @@ function modal() {
   });
 
   cerrarModal.addEventListener("click", (evt) => {
-    evt.preventDefault();
+    evt.preventDefault();    
     modal.classList.remove("modal--show");
   });
 
   cerrModal.addEventListener("click", (evt) => {
     evt.preventDefault();
-    debugger
     arrayCarrito.forEach(() => arrayCarrito.shift()); 
     const chango = document.querySelector(".ocultar__chango");
     chango.classList.remove("mostrar--chango");
+    abrirModal.classList.remove("habilitar__modal");
     modal.classList.remove("modal--show");
     localStorage.removeItem("carritoCompra");
   });
@@ -146,6 +146,7 @@ export function crearTarjetaProducto(productoNuevo) {
 
 export function changoNav() {
   document.querySelector(".ocultar__chango").classList.add("mostrar--chango");
+  document.querySelector(".lanzar__modal").classList.add("habilitar__modal");
 }
 
 modal();

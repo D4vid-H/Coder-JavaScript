@@ -151,15 +151,22 @@
   height: auto;
 }
 
-.ocultar__chango{  
+.lanzar__modal{
   display: flex;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;  
   position: relative;
 }
-.mostrar--chango{
-  opacity: 1;
+
+.habilitar__modal{
   pointer-events: unset;
+}
+
+.ocultar__chango{  
+  opacity: 0;
+}
+.mostrar--chango{
+  opacity: 1;  
 }
 
 .comColor{
