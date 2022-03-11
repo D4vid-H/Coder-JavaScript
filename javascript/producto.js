@@ -4,6 +4,16 @@ import {
   mostrarArregloProductos,
 } from "./filtroProducto.js";
 
+export const cargarJSON = async (arrayprod) => {
+  const Producto = await fetch("../json/productos.json");
+  const ProductoJSON = await Producto.json();
+  console.log(ProductoJSON);
+  ProductoJSON.forEach((elemento) => {
+    arrayprod.push(elemento);
+  });
+  mostrarArregloProductos();
+  botonCompra();
+};
 
 const limpiarCargaProducto = () => {
   document.getElementById("nombre").value = "";
@@ -58,12 +68,3 @@ export const selectOpc = (categorias) => {
   });
 };
 
-export const cargarJSON = async (arrayprod) => {
-  const Producto = await fetch("../json/productos.json");
-  const ProductoJSON = await Producto.json();
-  console.log(ProductoJSON);
-  ProductoJSON.forEach((elemento) => {
-    arrayprod.push(elemento);
-  });
-  mostrarArregloProductos();
-};

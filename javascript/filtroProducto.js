@@ -1,5 +1,6 @@
 import { crearTarjetaProducto } from "../main.js";
 import { PRODUCTOS, FILTRADO } from "./arrays.js";
+import { botonCompra } from "./carrito.js";
 
 export const filtroProductoMostrar = () => {
   const lista = document.querySelectorAll(".elementoLi1 a");
@@ -10,6 +11,7 @@ export const filtroProductoMostrar = () => {
         FILTRADO.push(item)
       );
       mostrarArregloProductos(categoriaId);
+      botonCompra();
       FILTRADO.length = 0;
     });
   }
