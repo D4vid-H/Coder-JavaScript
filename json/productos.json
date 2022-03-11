@@ -1,0 +1,296 @@
+[
+{
+    "nombre": "Almohada Avellana",
+    "id": "11",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 23
+},
+{
+    "nombre": "Almohada Chocolate",
+    "id": "12",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 55
+},
+{
+    "nombre": "Almohada Frutilla",
+    "id": "13",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Anillo Frutas",
+    "id": "14",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 23
+},
+{
+    "nombre": "Arroz Inflado Dulce",
+    "id": "15",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 55
+},
+{
+    "nombre": "Avena Instantanea",
+    "id": "16",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Avena Tradicional",
+    "id": "17",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 23
+},
+{
+    "nombre": "Bolitas Chocolate",
+    "id": "18",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 55
+},
+{
+    "nombre": "Copos Azucarados",
+    "id": "19",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Copos Naturales",
+    "id": "110",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 23
+},
+{
+    "nombre": "Granola con Miel",
+    "id": "111",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 55
+},
+{
+    "nombre": "Ositos de Avena",
+    "id": "112",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Quinoa POP",
+    "id": "113",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 23
+},
+{
+    "nombre": "Trigo Burgol",
+    "id": "114",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 55
+},
+{
+    "nombre": "Trigo Serrano",
+    "id": "115",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Tutucas Azucaradas",
+    "id": "116",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 23
+},
+{
+    "nombre": "Tutucas Edulcorante",
+    "id": "117",
+    "categoria": "1",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 55
+},
+{
+    "nombre": "Aji Molido",
+    "id": "21",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Ajo Negro",
+    "id": "22",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Ajo Polvo",
+    "id": "23",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Condimento Arroz",
+    "id": "24",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Bicarbonato",
+    "id": "25",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Chimichurri",
+    "id": "26",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Comino",
+    "id": "27",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Curcuma",
+    "id": "28",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Curry",
+    "id": "29",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Gran Masala",
+    "id": "210",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Oregano",
+    "id": "211",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Pimenton",
+    "id": "212",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Pimienta Blanca Grano",
+    "id": "213",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Pimienta Negra Grano",
+    "id": "214",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Condimento Pizza",
+    "id": "215",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Provenzal",
+    "id": "216",
+    "categoria": "2",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Anana Cubitos",
+    "id": "31",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Arandano Rojo",
+    "id": "32",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Chips Banana",
+    "id": "33",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Ciruela",
+    "id": "34",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Datiles",
+    "id": "35",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Pasas Uvas",
+    "id": "36",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Pasas Higos",
+    "id": "37",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Pasas Rubias",
+    "id": "38",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Tomates Deshidratados",
+    "id": "39",
+    "categoria": "3",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+}
+]

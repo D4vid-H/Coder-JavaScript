@@ -1,12 +1,12 @@
-import { toastCompra, promoMes } from "./javascript/app.js";
+import { toastCompra, promoMes,cargarCategorias} from "./javascript/app.js";
 import { descargarCarritoStorage } from "./javascript/localStorage.js";
 import {
   filtroProductoMostrar,
   mostrarArregloProductos,
 } from "./javascript/filtroProducto.js";
 import { botonCompra, mostrarCompra } from "./javascript/carrito.js";
-import { crearNuevoProducto } from "./javascript/producto.js";
-import { arrayCarrito } from "./javascript/arrays.js";
+import { crearNuevoProducto, selectOpc, cargarJSON } from "./javascript/producto.js";
+import { arrayCarrito, CATEGORIAS, PRODUCTOS } from "./javascript/arrays.js";
 
 ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
 
@@ -91,7 +91,7 @@ export function crearTarjetaProducto(productoNuevo) {
     `${productoNuevo.id}`
   ).innerHTML = `<div class="contenedorImgText">
               <div class="contenedorImagen">
-                <img src="../img/${productoNuevo.id}.webp" alt="Legumbres" class="rounded-circle rounded-circle rounded-circle imagenStandar"/>
+                <img src="../img/${productoNuevo.id}.png" alt="Legumbres" class="rounded-circle rounded-circle rounded-circle imagenStandar"/>
               </div>
               <div class="contenedorTexto">
                 <h4>${productoNuevo.nombre}</h4>
@@ -112,7 +112,7 @@ export function crearTarjetaProducto(productoNuevo) {
                       <div class="card mb-1" style="max-width: 540px;">
                         <div class="row g-0">
                           <div class="col-md-4">
-                            <img src="../img/${productoNuevo.id}.webp" class="img-fluid rounded-start" alt="...">
+                            <img src="../img/${productoNuevo.id}.png" class="img-fluid rounded-start" alt="...">
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
@@ -152,10 +152,14 @@ export function changoNav() {
 modal();
 
 const arrayPath = window.location.pathname.split("/");
-
 arrayPath[arrayPath.length - 1] === "index.html" && (promoMes(), toastCompra());
 arrayPath[arrayPath.length - 1] === "products.html" &&
-  (mostrarArregloProductos(),
+  (cargarJSON(PRODUCTOS),
+  selectOpc(CATEGORIAS),
+  cargarCategorias(CATEGORIAS),
   filtroProductoMostrar(),
   crearNuevoProducto(),
-  botonCompra());
+  botonCompra()
+  );
+
+ 

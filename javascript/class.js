@@ -1,5 +1,5 @@
 import { changoNav, crearTarjetaProducto } from "../main.js";
-import { PRODUCTOS, arrayCarrito, PRODUCTOSBORRADOS } from "./arrays.js";
+import { PRODUCTOS, arrayCarrito, PRODUCTOS_BORRADOS } from "./arrays.js";
 
 export class Producto {
   constructor(nombre, codigo, descripcion, precio, categoria) {
@@ -22,7 +22,7 @@ export class Producto {
       PRODUCTOS.findIndex((item) => item.id === producto.id),
       1
     );
-    arrayAux.forEach((item) => PRODUCTOSBORRADOS.push(item));
+    arrayAux.forEach((item) => PRODUCTOS_BORRADOS.push(item));
   }
 }
 

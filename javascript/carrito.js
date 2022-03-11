@@ -47,6 +47,7 @@ export const mostrarCompra = () => {
 };
 
 export function eliminarCompra(codigo) {
+  const chango = document.querySelector(".ocultar__chango");
   borrarStorageCompra();
   arrayCarrito.splice(
     arrayCarrito.findIndex((item) => item.id === codigo),
@@ -60,7 +61,8 @@ export function eliminarCompra(codigo) {
     document
       .querySelector(".lanzar__modal")
       .classList.remove("habilitar__modal"),
-    document.querySelector("#vantana__modal").classList.remove("modal--show"));
+    document.querySelector("#vantana__modal").classList.remove("modal--show"),    
+    chango.classList.remove("mostrar--chango"));
 }
 
 export function botonCompra() {

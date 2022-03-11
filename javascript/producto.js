@@ -1,5 +1,9 @@
 import { botonCompra } from "./carrito.js";
 import { Producto } from "./class.js";
+import {
+  mostrarArregloProductos,
+} from "./filtroProducto.js";
+
 
 const limpiarCargaProducto = () => {
   document.getElementById("nombre").value = "";
@@ -42,3 +46,24 @@ export function crearNuevoProducto() {
       : Swal.fire("Escribir un precio con este formato:$ 0.00");
   });
 }
+
+export const selectOpc = (categorias) => {
+  const opciones = document.querySelector("#selecCategoria");
+
+  categorias.forEach(({ id, nombre }) => {
+    const opc = document.createElement("option");
+    opc.setAttribute("value", `${id}`);
+    opciones.appendChild(opc);
+    opc.innerHTML = `${nombre}`;
+  });
+};
+
+export const cargarJSON = async (arrayprod) => {
+  const Producto = await fetch("../json/productos.json");
+  const ProductoJSON = await Producto.json();
+  console.log(ProductoJSON);
+  ProductoJSON.forEach((elemento) => {
+    arrayprod.push(elemento);
+  });
+  mostrarArregloProductos();
+};

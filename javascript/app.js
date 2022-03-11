@@ -1,3 +1,5 @@
+import { CATEGORIAS } from "./arrays.js";
+
 export function toastCompra() {
   dibujarToast();
   const clickCompra = document.querySelectorAll("#liveToastBtn");
@@ -57,4 +59,16 @@ function dibujarToast() {
                       </div>
                     </div>
                   </div>`;
+}
+
+export const cargarCategorias = (categorias) => {
+
+  const listaUl = document.querySelector('#listaUl');
+
+  categorias.forEach(({id, nombre}) => {
+    listaUl.innerHTML += `
+    <li class="elementoLi1">
+    <a value="${id}">${nombre}</a>
+    </li>`;
+  });
 }
