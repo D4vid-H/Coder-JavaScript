@@ -105,7 +105,8 @@
   max-width: 700px;
   height: 300px;
   max-height: 90%;
-  background-color: #F26250;
+  background-color: #F26250;    
+  overflow-y: auto;
 }
 
 .modal__titulo{

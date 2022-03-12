@@ -7,7 +7,6 @@ import {
 export const cargarJSON = async (arrayprod) => {
   const Producto = await fetch("../json/productos.json");
   const ProductoJSON = await Producto.json();
-  console.log(ProductoJSON);
   ProductoJSON.forEach((elemento) => {
     arrayprod.push(elemento);
   });

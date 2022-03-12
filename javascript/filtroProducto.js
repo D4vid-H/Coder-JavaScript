@@ -1,5 +1,5 @@
 import { crearTarjetaProducto } from "../main.js";
-import { PRODUCTOS, FILTRADO } from "./arrays.js";
+import { PRODUCTOS, FILTRADO, PAGINADO} from "./arrays.js";
 import { botonCompra } from "./carrito.js";
 
 export const filtroProductoMostrar = () => {
@@ -28,3 +28,29 @@ export const mostrarArregloProductos = (categoriaId) => {
         "No hay Productos disponibles");
 };
 
+/* export const Paginacion = () =>{
+  document.querySelectorAll('.page-item .page-link').forEach(element => element.addEventListener('click', (evt) => {
+  
+    const pagina = parseInt(evt.target.attributes.value.value);
+    const nPag = evt.target.innerHTML;
+
+    switch (nPag){
+
+      case '1':
+        PRODUCTOS.filter((element, index) => index < pagina).map(item => PAGINADO.push(item));
+        break;
+      case '2':
+        PRODUCTOS.filter((element, index) => (index+=20) < pagina).map(item => PAGINADO.push(item));
+        break;
+      case '3':
+        PRODUCTOS.filter((element, index) => index < pagina).map(item => PAGINADO.push(item));
+        break;
+      default:
+        break;
+    }
+
+  }));
+  
+
+
+}; */

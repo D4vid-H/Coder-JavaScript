@@ -76,9 +76,9 @@
 
             & .elementoLi{
 
-                &:hover{
-                transform: scale(1.2);
-                }
+                /* &:hover{
+                transform: scale(1.02);
+                } */
 
                 & .contenedorImgText{
                 height: 100%;
@@ -141,9 +141,11 @@
               }
         }
         .contenedorImagen{
-
-            width: 90%;
-            height: 145px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 125px;
         }
     }
 }
@@ -191,7 +193,9 @@
 
         & .contenedorImagen{
 
-            /*width: 80%;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
             height: 145px;
         }
 
@@ -230,6 +234,7 @@
     .seccionProd{
         grid-area: seccion1;
         text-align: center;
+        height: 2100px;
 
             & h2{
                 height: 50px;
@@ -242,10 +247,18 @@
             & .listaUl{
                 display: grid;
                 grid-template-columns: 24% 24% 24% 24%;
-                grid-template-rows: repeat(8, 280px);
+                grid-template-rows: repeat(auto, 280px);
                 column-gap: 1%;
                 justify-content: space-evenly;
                 text-transform: capitalize;
+                             
+                
+            }
+
+            & .grillaProd{
+                height: 2400px;
+                max-height: 100%;
+                overflow-y: auto;
             }
 
     }
@@ -258,7 +271,7 @@
         grid-area: main;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 300px 5000px;
+        grid-template-rows: 300px 1800px;
         grid-template-areas: "asaid" "seccion1";
 
         & .listaAside {
@@ -279,11 +292,15 @@
             & .listaUl{             
             display: grid;
             grid-template-columns: 48% 48%;
-            grid-template-rows: repeat(16, 300px);
+            grid-template-rows: repeat(auto, 280px);
             column-gap: 1%;
             justify-content: space-evenly;
-            text-transform: capitalize;
-            
+            text-transform: capitalize;            
+            }
+            & .grillaProd{
+                height: 4000px;
+                max-height: 100%;
+                overflow-y: auto;
             }
         }
     }
@@ -295,7 +312,7 @@
         grid-area: main;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 300px 3700px;
+        grid-template-rows: 300px 1800px;
         grid-template-areas: "asaid" "seccion1";
 
         & .listaAside {
@@ -315,10 +332,16 @@
             & .listaUl{
             display: grid;
             grid-template-columns: 30% 30% 30%;
-            grid-template-rows: repeat(11, 328px);
+            grid-template-rows: repeat(auto, 280px);
             column-gap: 1%;
             justify-content: space-evenly;
             text-transform: capitalize;
+            }
+
+            & .grillaProd{
+                height: 2000px;
+                max-height: 100%;
+                overflow-y: auto;
             }
         }
 

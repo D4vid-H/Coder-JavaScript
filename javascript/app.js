@@ -1,5 +1,3 @@
-import { CATEGORIAS } from "./arrays.js";
-
 export function toastCompra() {
   dibujarToast();
   const clickCompra = document.querySelectorAll("#liveToastBtn");

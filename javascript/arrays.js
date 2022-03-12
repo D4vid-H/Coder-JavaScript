@@ -44,3 +44,5 @@ export const CATEGORIAS = [
 {id: "10", nombre: "Semillas"},
 {id: "11", nombre: "Vinos"}
 ];
+
+export const PAGINADO = [];

@@ -2,13 +2,12 @@ import { toastCompra, promoMes,cargarCategorias} from "./javascript/app.js";
 import { descargarCarritoStorage } from "./javascript/localStorage.js";
 import {
   filtroProductoMostrar,
-  mostrarArregloProductos,
 } from "./javascript/filtroProducto.js";
 import { botonCompra, mostrarCompra } from "./javascript/carrito.js";
 import { crearNuevoProducto, selectOpc, cargarJSON } from "./javascript/producto.js";
 import { arrayCarrito, CATEGORIAS, PRODUCTOS } from "./javascript/arrays.js";
 
-ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true });
+
 
 const mostrarModalCarrito = () => {
   const seccion = document.createElement("section");
@@ -24,6 +23,7 @@ const mostrarModalCarrito = () => {
              <!--body-->             
               <div class="modal__cuerpo">
                 <table class="">
+                
                   <thead class="tabla__cabecera">
                     <tr>
                       <th class="info__compra">Info Compra</th>
@@ -33,7 +33,7 @@ const mostrarModalCarrito = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    
+                  
                   </tbody>
                   <tfoot>
                     <tr>
@@ -159,7 +159,8 @@ arrayPath[arrayPath.length - 1] === "products.html" &&
   cargarCategorias(CATEGORIAS),
   filtroProductoMostrar(),
   crearNuevoProducto(),
-  botonCompra()
+  botonCompra(),
+  ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true })
   );
 
  

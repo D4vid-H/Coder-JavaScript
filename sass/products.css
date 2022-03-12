@@ -45,8 +45,8 @@
     display: grid;
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
-    -ms-grid-rows: 300px 5000px;
-        grid-template-rows: 300px 5000px;
+    -ms-grid-rows: 300px 1800px;
+        grid-template-rows: 300px 1800px;
         grid-template-areas: "asaid" "seccion1";
   }
   main#cuerpoProd .listaAside .listaUl {
@@ -69,14 +69,19 @@
     display: grid;
     -ms-grid-columns: 48% 48%;
         grid-template-columns: 48% 48%;
-    -ms-grid-rows: (300px)[16];
-        grid-template-rows: repeat(16, 300px);
+    -ms-grid-rows: (280px)[auto];
+        grid-template-rows: repeat(auto, 280px);
     -webkit-column-gap: 1%;
             column-gap: 1%;
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
     text-transform: capitalize;
+  }
+  main#cuerpoProd .seccionProd .grillaProd {
+    height: 4000px;
+    max-height: 100%;
+    overflow-y: auto;
   }
   main .listaAside {
     -ms-grid-row: 1;
@@ -134,8 +139,17 @@
     font-weight: bold;
   }
   main .seccionProd .contenedorImagen {
-    width: 90%;
-    height: 145px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    height: 125px;
   }
   main .listaUl {
     list-style: none;
@@ -164,10 +178,11 @@
     text-shadow: -2px 8px 8px rgba(0, 0, 0, 0.51);
     font-weight: 500;
   }
-  /* main .listaUl .elementoLi:hover {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  } */
+  main .listaUl .elementoLi {
+    /* &:hover{
+                transform: scale(1.02);
+                } */
+  }
   main .listaUl .elementoLi .contenedorImgText {
     height: 100%;
     font-family: "Raleway", sans-serif;
@@ -300,8 +315,8 @@
     display: grid;
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
-    -ms-grid-rows: 300px 3700px;
-        grid-template-rows: 300px 3700px;
+    -ms-grid-rows: 300px 1800px;
+        grid-template-rows: 300px 1800px;
         grid-template-areas: "asaid" "seccion1";
   }
   main#cuerpoProd .listaAside .listaUl {
@@ -323,14 +338,19 @@
     display: grid;
     -ms-grid-columns: 30% 30% 30%;
         grid-template-columns: 30% 30% 30%;
-    -ms-grid-rows: (328px)[11];
-        grid-template-rows: repeat(11, 328px);
+    -ms-grid-rows: (280px)[auto];
+        grid-template-rows: repeat(auto, 280px);
     -webkit-column-gap: 1%;
             column-gap: 1%;
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
     text-transform: capitalize;
+  }
+  main#cuerpoProd .seccionProd .grillaProd {
+    height: 2000px;
+    max-height: 100%;
+    overflow-y: auto;
   }
   main .listaAside {
     -ms-grid-row: 1;
@@ -381,7 +401,15 @@
     background-color: blanchedalmond;
   }
   main .seccionProd .contenedorImagen {
-    /*width: 80%;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     height: 145px;
   }
   main .listaUl {
@@ -411,10 +439,11 @@
     text-shadow: -2px 8px 8px rgba(0, 0, 0, 0.51);
     font-weight: 500;
   }
-  /* main .listaUl .elementoLi:hover {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  } */
+  main .listaUl .elementoLi {
+    /* &:hover{
+                transform: scale(1.02);
+                } */
+  }
   main .listaUl .elementoLi .contenedorImgText {
     height: 100%;
     font-family: "Raleway", sans-serif;
@@ -592,6 +621,7 @@
     -ms-grid-column: 2;
     grid-area: seccion1;
     text-align: center;
+    height: 2100px;
   }
   main .seccionProd h2 {
     height: 50px;
@@ -605,14 +635,19 @@
     display: grid;
     -ms-grid-columns: 24% 24% 24% 24%;
         grid-template-columns: 24% 24% 24% 24%;
-    -ms-grid-rows: (280px)[8];
-        grid-template-rows: repeat(8, 280px);
+    -ms-grid-rows: (280px)[auto];
+        grid-template-rows: repeat(auto, 280px);
     -webkit-column-gap: 1%;
             column-gap: 1%;
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
     text-transform: capitalize;
+  }
+  main .seccionProd .grillaProd {
+    height: 2400px;
+    max-height: 100%;
+    overflow-y: auto;
   }
   main .listaUl {
     list-style: none;
@@ -641,10 +676,11 @@
     text-shadow: -2px 8px 8px rgba(0, 0, 0, 0.51);
     font-weight: 500;
   }
-  /* main .listaUl .elementoLi:hover {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  } */
+  main .listaUl .elementoLi {
+    /* &:hover{
+                transform: scale(1.02);
+                } */
+  }
   main .listaUl .elementoLi .contenedorImgText {
     height: 100%;
     font-family: "Raleway", sans-serif;
