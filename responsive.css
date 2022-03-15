@@ -1,10 +1,8 @@
-
-@keyframes latido{
-
+@keyframes latido {
   0% {
-    transform: scale(1.0);
+    transform: scale(1);
   }
-  10%{
+  10% {
     transform: scale(0.9);
   }
   25% {
@@ -20,47 +18,39 @@
     transform: scale(0.9);
   }
   100% {
-    transform: scale(1.0);
+    transform: scale(1);
   }
-
 }
 
-@keyframes recorrido{
-
+@keyframes recorrido {
   0% {
-      transform: rotateX(0deg);
+    transform: rotateX(0deg);
   }
 
-  50%{
+  50% {
     transform: rotateX(90deg);
   }
 
   100% {
     transform: rotateX(0deg);
   }
-
-
 }
 
-
-.recorrido{
+.recorrido {
   animation-name: recorrido;
   animation-iteration-count: 1;
   animation-duration: 2s;
   animation-delay: 1s;
-
 }
 
-
-.latido{
+.latido {
   animation-name: latido;
   animation-iteration-count: 3;
   animation-duration: 500ms;
   animation-delay: 3s;
 }
 
-
-.modal__inicio{
+.modal__inicio {
   position: fixed;
   top: 0;
   left: 0;
@@ -69,21 +59,21 @@
   background-color: #111111bd;
   display: flex;
   opacity: 0;
-  pointer-events: none; 
-  transition: opacity .3s .5s;
+  pointer-events: none;
+  transition: opacity 0.3s 0.5s;
   --transform: translateY(-100vh);
-  --transition: transform .4s; 
+  --transition: transform 0.4s;
 }
 
-.modal--show{
+.modal--show {
   opacity: 1;
   pointer-events: unset;
-  transition: opacity .6s;
+  transition: opacity 0.6s;
   --transform: translateY(0);
-  --transition: transform .8s .8s;
+  --transition: transform 0.8s 0.8s;
 }
 
-.modal__contenedor{
+.modal__contenedor {
   margin: auto;
   width: 90%;
   max-width: 900px;
@@ -97,80 +87,80 @@
   place-items: center;
   grid-auto-columns: 100%;
   transform: var(--transform);
-  transition:var(--transition);
+  transition: var(--transition);
 }
 
-.modal__cuerpo{
+.modal__cuerpo {
   width: 90%;
   max-width: 700px;
   height: 300px;
   max-height: 90%;
-  background-color: #F26250;    
+  background-color: #f26250;
   overflow-y: auto;
 }
 
-.modal__titulo{
+.modal__titulo {
   font-size: 2.5rem;
 }
 
-.imagen__chango{
+.imagen__chango {
   width: 25px;
-} 
+}
 
-.modal__boton{
+.modal__boton {
   text-decoration: none;
   color: #fff;
-  background-color: #F26250;
+  background-color: #f26250;
   padding: 1em 3em;
-  border: 1px solid ;
+  border: 1px solid;
   border-radius: 6px;
   display: inline-block;
   font-weight: 300;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
-.modal__boton:hover{
-  color: #F26250;
+.modal__boton:hover {
+  color: #f26250;
   background-color: #fff;
 }
 
-.info__compra{
-  width: 20rem;  
+.info__compra {
+  width: 20rem;
   background-color: #808080;
   border: 3px solid black;
 }
-.detalle__compra{
+.detalle__compra {
   width: 15rem;
   background-color: #808080;
 }
-.tabla__cabecera{  
+.tabla__cabecera {
   border: 3px solid black;
 }
 
-.imagen__marca__modal{
+.imagen__marca__modal {
   width: 75px;
   height: auto;
 }
 
-.lanzar__modal{
+.lanzar__modal {
   display: flex;
   opacity: 1;
-  pointer-events: none;  
+  pointer-events: none;
   position: relative;
 }
 
-.habilitar__modal{
+.habilitar__modal {
   pointer-events: unset;
 }
 
-.ocultar__chango{  
+.ocultar__chango {
   opacity: 0;
 }
-.mostrar--chango{
-  opacity: 1;  
+.mostrar--chango {
+  opacity: 1;
 }
 
-.comColor{
+.comColor {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -185,12 +175,12 @@
   justify-content: center;
 }
 
-.btn__eliminar{
+.btn__eliminar {
   background-color: aqua;
 }
 
-.truncate{
-    overflow: hidden;
+.truncate {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

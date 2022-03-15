@@ -1,13 +1,13 @@
-import { toastCompra, promoMes,cargarCategorias} from "./javascript/app.js";
+import { toastCompra, promoMes, cargarCategorias } from "./javascript/app.js";
 import { descargarCarritoStorage } from "./javascript/localStorage.js";
-import {
-  filtroProductoMostrar,
-} from "./javascript/filtroProducto.js";
+import { filtroProductoMostrar } from "./javascript/filtroProducto.js";
 import { botonCompra, mostrarCompra } from "./javascript/carrito.js";
-import { crearNuevoProducto, selectOpc, cargarJSON } from "./javascript/producto.js";
+import {
+  crearNuevoProducto,
+  selectOpc,
+  cargarJSON,
+} from "./javascript/producto.js";
 import { arrayCarrito, CATEGORIAS, PRODUCTOS } from "./javascript/arrays.js";
-
-
 
 const mostrarModalCarrito = () => {
   const seccion = document.createElement("section");
@@ -67,13 +67,13 @@ function modal() {
   });
 
   cerrarModal.addEventListener("click", (evt) => {
-    evt.preventDefault();    
+    evt.preventDefault();
     modal.classList.remove("modal--show");
   });
 
   cerrModal.addEventListener("click", (evt) => {
     evt.preventDefault();
-    arrayCarrito.forEach(() => arrayCarrito.shift()); 
+    arrayCarrito.forEach(() => arrayCarrito.shift());
     const chango = document.querySelector(".ocultar__chango");
     chango.classList.remove("mostrar--chango");
     abrirModal.classList.remove("habilitar__modal");
@@ -160,7 +160,4 @@ arrayPath[arrayPath.length - 1] === "products.html" &&
   filtroProductoMostrar(),
   crearNuevoProducto(),
   botonCompra(),
-  ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true })
-  );
-
- 
+  ScrollReveal().reveal(".elementoLi", { delay: 500, reset: true }));

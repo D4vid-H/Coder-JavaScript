@@ -1,8 +1,6 @@
 import { botonCompra } from "./carrito.js";
 import { Producto } from "./class.js";
-import {
-  mostrarArregloProductos,
-} from "./filtroProducto.js";
+import { mostrarArregloProductos } from "./filtroProducto.js";
 
 export const cargarJSON = async (arrayprod) => {
   const Producto = await fetch("../json/productos.json");
@@ -66,4 +64,3 @@ export const selectOpc = (categorias) => {
     opc.innerHTML = `${nombre}`;
   });
 };
-

@@ -53,7 +53,8 @@ export function eliminarCompra(codigo) {
     arrayCarrito.findIndex((item) => item.id === codigo),
     1
   );
-  arrayCarrito.length !== 0 && (document.querySelector("#cantComp").innerHTML = arrayCarrito.length);
+  arrayCarrito.length !== 0 &&
+    (document.querySelector("#cantComp").innerHTML = arrayCarrito.length);
   cargaCarritoStorege(arrayCarrito);
   mostrarCompra();
   arrayCarrito.length === 0 &&
@@ -61,7 +62,7 @@ export function eliminarCompra(codigo) {
     document
       .querySelector(".lanzar__modal")
       .classList.remove("habilitar__modal"),
-    document.querySelector("#vantana__modal").classList.remove("modal--show"),    
+    document.querySelector("#vantana__modal").classList.remove("modal--show"),
     chango.classList.remove("mostrar--chango"));
 }
 

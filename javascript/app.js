@@ -60,13 +60,12 @@ function dibujarToast() {
 }
 
 export const cargarCategorias = (categorias) => {
+  const listaUl = document.querySelector("#listaUl");
 
-  const listaUl = document.querySelector('#listaUl');
-
-  categorias.forEach(({id, nombre}) => {
+  categorias.forEach(({ id, nombre }) => {
     listaUl.innerHTML += `
     <li class="elementoLi1">
     <a value="${id}">${nombre}</a>
     </li>`;
   });
-}
+};
