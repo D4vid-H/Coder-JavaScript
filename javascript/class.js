@@ -17,13 +17,14 @@ export class Producto {
       : PRODUCTOS.push(productoNuevo),
       crearTarjetaProducto(productoNuevo);
   }
-  borrarProducto(producto) {
+  //metodo no incluido en el sitio.
+  /* borrarProducto(producto) {
     const arrayAux = PRODUCTOS.splice(
       PRODUCTOS.findIndex((item) => item.id === producto.id),
       1
     );
     arrayAux.forEach((item) => PRODUCTOS_BORRADOS.push(item));
-  }
+  } */
 }
 
 export class Compra {

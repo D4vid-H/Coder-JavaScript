@@ -576,8 +576,8 @@
     display: grid;
     -ms-grid-columns: 20% 75%;
         grid-template-columns: 20% 75%;
-    -ms-grid-rows: 2400px;
-        grid-template-rows: 2400px;
+    -ms-grid-rows: 1600px;
+        grid-template-rows: 1600px;
         grid-template-areas: "asaid seccion1";
   }
   main .listaAside {
@@ -621,7 +621,7 @@
     -ms-grid-column: 2;
     grid-area: seccion1;
     text-align: center;
-    height: 2100px;
+    height: 1500px;
   }
   main .seccionProd h2 {
     height: 50px;
@@ -645,7 +645,7 @@
     text-transform: capitalize;
   }
   main .seccionProd .grillaProd {
-    height: 2400px;
+    height: 1300px;
     max-height: 100%;
     overflow-y: auto;
   }

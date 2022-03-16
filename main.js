@@ -1,6 +1,9 @@
 import { toastCompra, promoMes, cargarCategorias } from "./javascript/app.js";
 import { descargarCarritoStorage } from "./javascript/localStorage.js";
-import { filtroProductoMostrar } from "./javascript/filtroProducto.js";
+import {
+  filtroProductoMostrar,
+  paginarProductos,
+} from "./javascript/filtroProducto.js";
 import { botonCompra, mostrarCompra } from "./javascript/carrito.js";
 import {
   crearNuevoProducto,
@@ -83,13 +86,15 @@ function modal() {
 }
 
 export function crearTarjetaProducto(productoNuevo) {
-  let etiqueta = document.createElement("li");
-  etiqueta.setAttribute("class", "elementoLi");
-  etiqueta.setAttribute("id", `${productoNuevo.id}`);
-  document.getElementById(`listaProductos`).appendChild(etiqueta);
-  document.getElementById(
-    `${productoNuevo.id}`
-  ).innerHTML = `<div class="contenedorImgText">
+  let etiqueta;
+  productoNuevo !== undefined &&
+    ((etiqueta = document.createElement("li")),
+    etiqueta.setAttribute("class", "elementoLi"),
+    etiqueta.setAttribute("id", `${productoNuevo.id}`),
+    document.getElementById(`listaProductos`).appendChild(etiqueta),
+    (document.getElementById(
+      `${productoNuevo.id}`
+    ).innerHTML = `<div class="contenedorImgText">
               <div class="contenedorImagen">
                 <img src="../img/${productoNuevo.id}.webp" alt="Legumbres" class="rounded-circle rounded-circle rounded-circle imagenStandar"/>
               </div>
@@ -141,7 +146,7 @@ export function crearTarjetaProducto(productoNuevo) {
                   </div>
                 </div>
               </div>
-          </li>`;
+          </li>`));
 }
 
 export function changoNav() {

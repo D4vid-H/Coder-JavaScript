@@ -69,3 +69,4 @@ export const cargarCategorias = (categorias) => {
     </li>`;
   });
 };
+

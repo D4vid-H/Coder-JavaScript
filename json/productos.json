@@ -292,5 +292,236 @@
     "categoria": "3",
     "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
     "precio": 74
+},
+{
+    "nombre": "Almendras",
+    "id": "41",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Avellanas",
+    "id": "42",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Castañas Caju",
+    "id": "43",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Castaña Caju Salada",
+    "id": "44",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Maiz Frito",
+    "id": "45",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Mani Cascara",
+    "id": "46",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Mani Crudo",
+    "id": "47",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Mani Pelado",
+    "id": "48",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Mani pelado s/sal",
+    "id": "49",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Nuez",
+    "id": "410",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 96
+},
+{
+    "nombre": "Nuez Mariposa",
+    "id": "411",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Nuez Pecan",
+    "id": "412",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 55
+},
+{
+    "nombre": "Pistacho salado",
+    "id": "413",
+    "categoria": "4",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 84
+},
+{
+    "nombre": "Aceitunas Griegas",
+    "id": "91",
+    "categoria": "9",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Aceitunas Negras",
+    "id": "92",
+    "categoria": "9",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Aceitunas Verdes",
+    "id": "93",
+    "categoria": "9",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Tomate Triturado",
+    "id": "94",
+    "categoria": "9",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Arroz Koshihikari",
+    "id": "101",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Arroz Negro",
+    "id": "102",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Arroz Yamani",
+    "id": "103",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Chia",
+    "id": "104",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Girasol",
+    "id": "105",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Lino",
+    "id": "106",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Quinoa",
+    "id": "107",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Sesamo Blanco",
+    "id": "108",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Sesamo Integral",
+    "id": "109",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 74
+},
+{
+    "nombre": "Semilla Zapallo",
+    "id": "1010",
+    "categoria": "10",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 36
+},
+{
+    "nombre": "Cero Syrah",
+    "id": "1101",
+    "categoria": "11",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 688
+},
+{
+    "nombre": "Chichero Malbec",
+    "id": "1102",
+    "categoria": "11",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 879
+},
+{
+    "nombre": "Cuatro Vacas Locas Malbec,Cabernet",
+    "id": "1103",
+    "categoria": "11",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 778
+},
+{
+    "nombre": "Esencia de la Tierra Malbec",
+    "id": "1104",
+    "categoria": "11",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 956
+},
+{
+    "nombre": "Santa Irene Cabernet",
+    "id": "1105",
+    "categoria": "11",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 680
+},
+{
+    "nombre": "Stutz Malbec",
+    "id": "1106",
+    "categoria": "11",
+    "descripcion": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, exercitationem?",
+    "precio": 766
 }
 ]
